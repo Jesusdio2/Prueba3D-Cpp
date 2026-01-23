@@ -11,12 +11,10 @@ jobs:
       - name: Checkout del repositorio
         uses: actions/checkout@v3
 
-      - name: Instalar .NET y UWP workloads
-        run: |
-          choco install visualstudio2022community -y --package-parameters "--add Microsoft.VisualStudio.Workload.Universal"
-          choco install visualstudio2022buildtools -y
+      - name: Instalar Build Tools con UWP
+        run: choco install visualstudio2022buildtools -y --package-parameters "--add Microsoft.VisualStudio.Workload.Universal"
 
-      - name: Crear proyecto UWP vacío
+      - name: Crear proyecto UWP vacío y subirlo
         run: |
           dotnet new uwp -n MiAppUWP
           git config --global user.name "github-actions[bot]"
