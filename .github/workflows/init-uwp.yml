@@ -1,0 +1,26 @@
+name: Init UWP Project
+
+on:
+  workflow_dispatch:   # 👈 Se ejecuta manualmente desde la pestaña Actions
+
+jobs:
+  init:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v3
+
+      - name: Instalar .NET y UWP workloads
+        run: |
+          choco install visualstudio2022community -y --package-parameters "--add Microsoft.VisualStudio.Workload.Universal"
+          choco install visualstudio2022buildtools -y
+
+      - name: Crear proyecto UWP vacío
+        run: |
+          dotnet new uwp -n MiAppUWP
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add MiAppUWP
+          git commit -m "CI: crear proyecto UWP vacío"
+          git push origin main
