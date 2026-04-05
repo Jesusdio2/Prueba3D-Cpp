@@ -12,13 +12,22 @@ jobs:
       - name: Checkout código
         uses: actions/checkout@v4
 
-      - name: Configurar JDK 17
+      - name: Configurar JDK
         uses: actions/setup-java@v4
         with:
-          distribution: 'temurin'
-          java-version: '17'
+          distribution: temurin
+          java-version: 17
 
       - name: Configurar Android SDK
         uses: android-actions/setup-android@v3
 
-      - name:
+      - name: Instalar NDK y CMake
+        run: |
+          sdkmanager "ndk;25.2.9519653"
+          sdkmanager "cmake;3.22.1"
+
+      - name: Dar permisos a Gradle
+        run: chmod +x ./gradlew
+
+      - name: Compilar proyecto
+        run: ./gradlew assembleDebug
