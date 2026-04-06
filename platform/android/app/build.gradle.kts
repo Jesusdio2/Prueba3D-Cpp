@@ -1,6 +1,6 @@
 plugins {
     id("com.android.application")
-    kotlin("android") version "1.9.0"
+    kotlin("android") // No declarar versión aquí
 }
 
 android {
@@ -25,13 +25,41 @@ android {
         release {
             isMinifyEnabled = false
         }
+        debug {
+            // Opcional: habilitar logs y depuración
+            isDebuggable = true
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = "17"
     }
 
     externalNativeBuild {
         cmake {
-            path = file("../../../../core/CMakeLists.txt")
+            // Ruta relativa a tu CMakeLists.txt de core/
+            path = file("CMakeLists.txt")
         }
     }
+
+    // Opcional: permite usar Jetpack Compose si agregas UI
+    buildFeatures {
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.3" // compatible con Compose Material3
+    }
+}
+
+repositories {
+    google()
+    mavenCentral()
 }
 
 dependencies {
