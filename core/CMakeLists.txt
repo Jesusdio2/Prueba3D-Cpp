@@ -2,8 +2,11 @@
 cmake_minimum_required(VERSION 3.18)
 
 # Crea una librería que pueda ser usada por Android y UWP
+# Agregamos todos los archivos fuente del core
 add_library(core STATIC
         game.cpp
+        scene.cpp
+        renderer.cpp
 )
 
 # Incluye headers de core/
