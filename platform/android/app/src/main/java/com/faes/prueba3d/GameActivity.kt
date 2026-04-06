@@ -14,16 +14,16 @@ class GameActivity : ComponentActivity() {
     companion object {
         init {
             try {
-                System.loadLibrary("milib")
+                // Usamos el nombre real de la librería nativa
+                System.loadLibrary("prueba3d_native")
                 Log.i("GameActivity", "Librería nativa cargada correctamente")
             } catch (e: UnsatisfiedLinkError) {
                 Log.e("GameActivity", "No se encontró la librería nativa: ${e.message}")
-            } catch (e: Exception) {
-                Log.e("GameActivity", "Error al cargar la librería: ${e.message}")
             }
         }
     }
 
+    // Nombre que el puente JNI (jni_bridge.cpp) espera
     external fun initGame()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,7 +32,7 @@ class GameActivity : ComponentActivity() {
         nativeLoaded = try {
             initGame()
             true
-        } catch (e: UnsatisfiedLinkError) {
+        } catch (e: Exception) {
             false
         }
 
@@ -51,20 +51,20 @@ class GameActivity : ComponentActivity() {
 @Composable
 fun GameScreen() {
     Surface {
-        Text("Juego inicializado correctamente con C++")
+        Text("Juego 3D en C++ inicializado correctamente!")
     }
 }
 
 @Composable
 fun MissingLibraryDialog() {
     AlertDialog(
-        onDismissRequest = { /* cerrar diálogo */ },
+        onDismissRequest = { },
         confirmButton = {
-            TextButton(onClick = { /* cerrar app o continuar */ }) {
-                Text("Aceptar")
+            TextButton(onClick = { }) {
+                Text("Cerrar")
             }
         },
-        title = { Text("Error de librería") },
-        text = { Text("No se encontró la librería nativa. La aplicación continuará sin funciones avanzadas.") }
+        title = { Text("Error Nativo") },
+        text = { Text("No se pudo conectar con el motor C++.") }
     )
 }
