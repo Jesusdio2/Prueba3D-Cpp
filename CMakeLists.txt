@@ -4,11 +4,14 @@ project(Prueba3D)
 # Primero, el core
 add_subdirectory(core)
 
-# Detecta la plataforma: ANDROID o UWP (WIN32)
+# Detecta la plataforma
 if (ANDROID)
     message(STATUS "Configurando para Android")
     add_subdirectory(platform/android)
 elseif (WIN32)
     message(STATUS "Configurando para UWP")
     add_subdirectory(platform/uwp)
+elseif (APPLE)
+    message(STATUS "Configurando para Apple (macOS/iOS)")
+    add_subdirectory(platform/apple)
 endif()

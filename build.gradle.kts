@@ -12,7 +12,7 @@ buildscript {
     }
     dependencies {
         classpath("com.android.tools.build:gradle:8.3.0")
-        classpath(kotlin("gradle-plugin", version = "1.9.0"))
+        classpath(kotlin("gradle-plugin", version = "1.9.10")) // 🔹 actualizado a 1.9.10
     }
 }
 

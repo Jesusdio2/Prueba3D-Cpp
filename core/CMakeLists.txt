@@ -1,4 +1,4 @@
-# Core CMake
+# core/CMakeLists.txt
 cmake_minimum_required(VERSION 3.18)
 
 # Crea una librería que pueda ser usada por Android y UWP
@@ -6,7 +6,11 @@ cmake_minimum_required(VERSION 3.18)
 add_library(core STATIC
         game.cpp
         scene.cpp
-        renderer.cpp
+        platform/opengl/opengl_renderer.cpp
+        platform/opengl/opengl_renderer.h
+        game.h
+        scene.h
+        renderer/renderer.h
 )
 
 # Incluye headers de core/
