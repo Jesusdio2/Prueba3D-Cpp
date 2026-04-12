@@ -2,13 +2,19 @@
 #pragma once
 
 #ifdef _WIN32
-    #define EXPORT_API __declspec(dllexport)
+#define EXPORT_API __declspec(dllexport)
 #else
-    #define EXPORT_API
+#define EXPORT_API
 #endif
 
+enum class GameState {
+    SPLASH,
+    MENU,
+    IN_GAME
+};
+
 extern "C" {
-    EXPORT_API void InitGame3D();
-    EXPORT_API void UpdateGame3D(float deltaTime);
-    EXPORT_API void ShutdownGame3D();
+EXPORT_API void InitGame3D();
+EXPORT_API void UpdateGame3D(float deltaTime);
+EXPORT_API void ShutdownGame3D();
 }
