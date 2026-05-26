@@ -1,24 +1,6 @@
-// build.gradle.kts en la raíz del proyecto
-
+// build.gradle.kts (Raíz)
 plugins {
-    // Plugin de Android y Kotlin se aplican en los módulos, no aquí
-    // Aquí puedes aplicar plugins globales si los necesitas
-}
-
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
-    }
-    dependencies {
-        classpath("com.android.tools.build:gradle:8.3.0")
-        classpath(kotlin("gradle-plugin", version = "1.9.10")) // 🔹 actualizado a 1.9.10
-    }
-}
-
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-    }
+    id("com.android.application") version "8.6.1" apply false
+    id("com.android.library") version "8.6.1" apply false
+    id("org.jetbrains.kotlin.android") version "2.0.0" apply false
 }

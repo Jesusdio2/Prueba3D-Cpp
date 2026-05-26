@@ -1,0 +1,3 @@
+/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/CMakeFiles/bgfx-populate.dir
+/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/CMakeFiles/ALL_BUILD.dir
+/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/CMakeFiles/ZERO_CHECK.dir

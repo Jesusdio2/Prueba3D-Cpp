@@ -1,128 +1,211 @@
 #include "splash_renderer.h"
-#include <GLES3/gl3.h>
+#include <bgfx/bgfx.h>
+#include <bx/math.h>
+#include <bx/file.h>
 #include <android/log.h>
+#include <vector>
 
 #define LOGE(...) __android_log_print(ANDROID_LOG_ERROR, "SplashRenderer", __VA_ARGS__)
+#define LOGI(...) __android_log_print(ANDROID_LOG_INFO, "SplashRenderer", __VA_ARGS__)
 
-const char* vertexShaderSource = R"glsl(#version 300 es
-layout (location = 0) in vec2 aPos;
-layout (location = 1) in vec2 aTexCoord;
+struct PosTexCoordVertex {
+    float x, y;
+    float u, v;
 
-out vec2 TexCoord;
+    static bgfx::VertexLayout ms_layout;
+    static void init() {
+        ms_layout
+                .begin()
+                .add(bgfx::Attrib::Position, 2, bgfx::AttribType::Float)
+                .add(bgfx::Attrib::TexCoord0, 2, bgfx::AttribType::Float)
+                .end();
+        LOGI("VertexLayout initialized: stride %d, hash %u", ms_layout.m_stride, ms_layout.m_hash);
+    }
+};
 
-void main() {
-    gl_Position = vec4(aPos, 0.0, 1.0);
-    TexCoord = aTexCoord;
+bgfx::VertexLayout PosTexCoordVertex::ms_layout;
+
+// Simple GLSL shaders for OpenGL ES 3.0
+static const char* vertexShaderSource =
+    "#version 300 es\n"
+    "layout(location=0) in vec2 aPos;\n"
+    "layout(location=1) in vec2 aTexCoord;\n"
+    "out vec2 TexCoord;\n"
+    "void main() {\n"
+    "    gl_Position = vec4(aPos, 0.0, 1.0);\n"
+    "    TexCoord = aTexCoord;\n"
+    "}\n";
+
+static const char* fragmentShaderSource =
+    "#version 300 es\n"
+    "precision mediump float;\n"
+    "in vec2 TexCoord;\n"
+    "uniform sampler2D ourTexture;\n"
+    "out vec4 FragColor;\n"
+    "void main() {\n"
+    "    FragColor = texture(ourTexture, TexCoord);\n"
+    "}\n";
+
+// Helper to wrap GLSL source into bgfx shader memory
+static const bgfx::Memory* createShaderMem(const char* source, bool isVertex, uint16_t uniformCount = 0) {
+    uint32_t sourceLen = (uint32_t)strlen(source);
+    // Header: Magic(4), Hash(4), UniformCount(2) = 10 bytes
+    uint32_t headerLen = 10;
+    uint32_t metadataLen = 0;
+
+    // If uniformCount > 0, we MUST provide metadata (name length, name string, type, num, regIndex, regCount)
+    // for each uniform. For our fragment shader, we have 1 uniform: "ourTexture".
+    if (!isVertex && uniformCount == 1) {
+        // nameLen(1) + "ourTexture"(10) + type(1) + num(1) + regIndex(2) + regCount(2) = 17 bytes
+        metadataLen = 1 + 10 + 1 + 1 + 2 + 2;
+    }
+
+    // After metadata, bgfx expects a 4-byte shader size (uint32_t)
+    uint32_t shaderSizeFieldLen = 4;
+
+    const bgfx::Memory* mem = bgfx::alloc(headerLen + metadataLen + shaderSizeFieldLen + sourceLen);
+
+    uint8_t* data = mem->data;
+    memcpy(data, isVertex ? "VSH" : "FSH", 3);
+    data[3] = 0x05; // Version 5
+    memset(data + 4, 0, 4); // Hash
+
+    // Uniform Count (offset 8, 2 bytes, little-endian)
+    data[8] = (uint8_t)(uniformCount & 0xFF);
+    data[9] = (uint8_t)((uniformCount >> 8) & 0xFF);
+
+    uint8_t* curr = data + 10;
+    if (!isVertex && uniformCount == 1) {
+        const char* name = "ourTexture";
+        uint8_t nameLen = (uint8_t)strlen(name);
+        *curr++ = nameLen;
+        memcpy(curr, name, nameLen);
+        curr += nameLen;
+        *curr++ = (uint8_t)bgfx::UniformType::Sampler;
+        *curr++ = 1; // num (array size)
+
+        // regIndex (2 bytes, little-endian)
+        *curr++ = 0;
+        *curr++ = 0;
+        // regCount (2 bytes, little-endian)
+        *curr++ = 1; // 1 for sampler
+        *curr++ = 0;
+    }
+
+    // Shader size field (4 bytes, little-endian)
+    *curr++ = (uint8_t)(sourceLen & 0xFF);
+    *curr++ = (uint8_t)((sourceLen >> 8) & 0xFF);
+    *curr++ = (uint8_t)((sourceLen >> 16) & 0xFF);
+    *curr++ = (uint8_t)((sourceLen >> 24) & 0xFF);
+
+    memcpy(curr, source, sourceLen);
+
+    return mem;
 }
-)glsl";
 
-const char* fragmentShaderSource = R"glsl(#version 300 es
-precision mediump float;
-
-in vec2 TexCoord;
-uniform sampler2D ourTexture;
-
-out vec4 FragColor;
-
-void main() {
-    FragColor = texture(ourTexture, TexCoord);
+SplashRenderer::SplashRenderer()
+        : shaderProgram(BGFX_INVALID_HANDLE)
+        , vbh(BGFX_INVALID_HANDLE)
+        , s_texColor(BGFX_INVALID_HANDLE)
+        , isValid(false) {
 }
-)glsl";
 
-SplashRenderer::SplashRenderer() {}
 SplashRenderer::~SplashRenderer() {
-    if (vbo) glDeleteBuffers(1, &vbo);
-    if (vao) glDeleteVertexArrays(1, &vao);
-    if (shaderProgram) glDeleteProgram(shaderProgram);
+    Shutdown();
 }
 
-unsigned int SplashRenderer::CompileShader(unsigned int type, const char* source) {
-    unsigned int shader = glCreateShader(type);
-    glShaderSource(shader, 1, &source, nullptr);
-    glCompileShader(shader);
-
-    int success;
-    glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
-    if (!success) {
-        char infoLog[512];
-        glGetShaderInfoLog(shader, 512, nullptr, infoLog);
-        LOGE("ERROR::SHADER::COMPILATION_FAILED\n%s", infoLog);
-    }
-    return shader;
-}
-
-unsigned int SplashRenderer::CreateShaderProgram(const char* vertexSource, const char* fragmentSource) {
-    unsigned int vertexShader = CompileShader(GL_VERTEX_SHADER, vertexSource);
-    unsigned int fragmentShader = CompileShader(GL_FRAGMENT_SHADER, fragmentSource);
-
-    unsigned int program = glCreateProgram();
-    glAttachShader(program, vertexShader);
-    glAttachShader(program, fragmentShader);
-    glLinkProgram(program);
-
-    int success;
-    glGetProgramiv(program, GL_LINK_STATUS, &success);
-    if (!success) {
-        char infoLog[512];
-        glGetProgramInfoLog(program, 512, nullptr, infoLog);
-        LOGE("ERROR::SHADER::PROGRAM::LINKING_FAILED\n%s", infoLog);
+void SplashRenderer::CreateShaderProgram() {
+    const bgfx::Memory* vshMem = createShaderMem(vertexShaderSource, true, 0);
+    bgfx::ShaderHandle vsh = bgfx::createShader(vshMem);
+    if (!bgfx::isValid(vsh)) {
+        LOGE("Failed to create vertex shader");
+        return;
     }
 
-    glDeleteShader(vertexShader);
-    glDeleteShader(fragmentShader);
+    const bgfx::Memory* fshMem = createShaderMem(fragmentShaderSource, false, 1);
+    bgfx::ShaderHandle fsh = bgfx::createShader(fshMem);
+    if (!bgfx::isValid(fsh)) {
+        LOGE("Failed to create fragment shader");
+        bgfx::destroy(vsh);
+        return;
+    }
 
-    return program;
+    shaderProgram = bgfx::createProgram(vsh, fsh, true);
+    if (!bgfx::isValid(shaderProgram)) {
+        LOGE("Failed to create shader program");
+    } else {
+        LOGI("Shader program created successfully");
+    }
 }
 
 void SplashRenderer::Init() {
-    shaderProgram = CreateShaderProgram(vertexShaderSource, fragmentShaderSource);
+    Shutdown(); // Ensure clean state
 
-    // Quad coordinates (x, y, u, v) - full screen quad
-    float vertices[] = {
-        // Positions   // Texture Coords
-        -1.0f,  1.0f,  0.0f, 0.0f, // Top-left
-        -1.0f, -1.0f,  0.0f, 1.0f, // Bottom-left
-         1.0f,  1.0f,  1.0f, 0.0f, // Top-right
-         1.0f, -1.0f,  1.0f, 1.0f  // Bottom-right
+    PosTexCoordVertex::init();
+    CreateShaderProgram();
+    if (!bgfx::isValid(shaderProgram)) return;
+
+    static const char* kTexUniform = "ourTexture";
+    LOGI("Creating uniform: %s", kTexUniform);
+    s_texColor = bgfx::createUniform(kTexUniform, bgfx::UniformType::Sampler);
+
+    PosTexCoordVertex vertices[] = {
+            {-1.0f,  1.0f,  0.0f, 0.0f},
+            {-1.0f, -1.0f,  0.0f, 1.0f},
+            { 1.0f,  1.0f,  1.0f, 0.0f},
+            { 1.0f, -1.0f,  1.0f, 1.0f}
     };
 
-    glGenVertexArrays(1, &vao);
-    glGenBuffers(1, &vbo);
-
-    glBindVertexArray(vao);
-
-    glBindBuffer(GL_ARRAY_BUFFER, vbo);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-    // Position attribute
-    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)0);
-    glEnableVertexAttribArray(0);
-
-    // Texture coord attribute
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)(2 * sizeof(float)));
-    glEnableVertexAttribArray(1);
-
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
-    glBindVertexArray(0);
+    vbh = bgfx::createVertexBuffer(bgfx::copy(vertices, sizeof(vertices)), PosTexCoordVertex::ms_layout);
+    isValid = bgfx::isValid(vbh);
+    LOGI("SplashRenderer::Init completed. isValid: %d, vbh: %hu", isValid, vbh.idx);
 }
 
-void SplashRenderer::Render(SplashTexture& tex) {
-    glClearColor(127/255.0f, 127/255.0f, 127/255.0f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT);
+void SplashRenderer::Shutdown() {
+    if (bgfx::isValid(shaderProgram)) {
+        bgfx::destroy(shaderProgram);
+        shaderProgram = BGFX_INVALID_HANDLE;
+    }
+    if (bgfx::isValid(vbh)) {
+        bgfx::destroy(vbh);
+        vbh = BGFX_INVALID_HANDLE;
+    }
+    if (bgfx::isValid(s_texColor)) {
+        bgfx::destroy(s_texColor);
+        s_texColor = BGFX_INVALID_HANDLE;
+    }
+    isValid = false;
+}
 
-    if (shaderProgram == 0 || tex.id == 0) return;
+void SplashRenderer::Render(SplashTexture& tex, bgfx::ViewId viewId) {
+    if (!isValid || !bgfx::isValid(tex.handle)) {
+        LOGE("SplashRenderer::Render skipping: isValid=%d, tex.handle=%hu", isValid, tex.handle.idx);
+        return;
+    }
 
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    if (PosTexCoordVertex::ms_layout.m_hash == 0) {
+        LOGE("VertexLayout hash is 0 in Render! Stride: %d. Re-initializing...", PosTexCoordVertex::ms_layout.m_stride);
+        PosTexCoordVertex::init();
+        if (PosTexCoordVertex::ms_layout.m_hash == 0) {
+            LOGE("Failed to re-initialize VertexLayout hash!");
+            return;
+        }
+    }
 
-    glUseProgram(shaderProgram);
+    // View rect should be handled by the caller (Game::UpdateGame3D)
+    // but we set up the transform for a full-screen quad within that view
+    float view[16];
+    float proj[16];
+    bx::mtxIdentity(view);
+    bx::mtxOrtho(proj, -1.0f, 1.0f, -1.0f, 1.0f, -1.0f, 1.0f, 0.0f, bgfx::getCaps()->homogeneousDepth);
+    bgfx::setViewTransform(viewId, view, proj);
 
-    glUniform1i(glGetUniformLocation(shaderProgram, "ourTexture"), 0);
+    bgfx::setVertexBuffer(0, vbh);
+    bgfx::setTexture(0, s_texColor, tex.handle);
 
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, tex.id);
-
-    glBindVertexArray(vao);
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-    glBindVertexArray(0);
+    uint64_t state = BGFX_STATE_WRITE_RGB | BGFX_STATE_WRITE_A |
+                     BGFX_STATE_PT_TRISTRIP |
+                     BGFX_STATE_BLEND_FUNC(BGFX_STATE_BLEND_SRC_ALPHA, BGFX_STATE_BLEND_INV_SRC_ALPHA);
+    bgfx::setState(state);
+    bgfx::submit(viewId, shaderProgram);
 }

@@ -1,0 +1,3 @@
+/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bx-subbuild/CMakeFiles/bx-populate.dir
+/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bx-subbuild/CMakeFiles/ALL_BUILD.dir
+/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bx-subbuild/CMakeFiles/ZERO_CHECK.dir

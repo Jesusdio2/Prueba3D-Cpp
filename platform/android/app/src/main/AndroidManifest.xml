@@ -2,8 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:versionCode="1"
-    android:versionName="1.0"
-    package="com.faes.prueba3d">
+    android:versionName="1.0">
 
     <uses-permission
         android:name="android.permission.INTERNET" />
@@ -36,8 +35,10 @@
         <activity
             android:name=".GameActivity"
             android:screenOrientation="landscape"
-            android:configChanges="orientation|screenSize"
+            android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize|screenLayout|density|uiMode"
             android:immersive="true"
+            android:alwaysRetainTaskState="true"
+            android:launchMode="singleTask"
             android:exported="true">
 
             <intent-filter>

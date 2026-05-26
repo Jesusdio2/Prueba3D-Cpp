@@ -1,48 +1,69 @@
 package com.faes.prueba3d
 
 import android.content.Context
-import android.opengl.GLSurfaceView
 import android.util.AttributeSet
-import javax.microedition.khronos.egl.EGLConfig
-import javax.microedition.khronos.opengles.GL10
+import android.view.Surface
+import android.view.SurfaceHolder
+import android.view.SurfaceView
+
+import android.view.MotionEvent
 
 class GameSurface @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null
-) : GLSurfaceView(context, attrs) {
+) : SurfaceView(context, attrs), SurfaceHolder.Callback {
 
-    private val renderer: NativeRenderer
+    private var renderThread: Thread? = null
+    private var running = false
 
     init {
-        setEGLContextClientVersion(3) // OpenGL ES 3.0
-
-        renderer = NativeRenderer()
-
-        setRenderer(renderer)
-        renderMode = RENDERMODE_CONTINUOUSLY
+        holder.addCallback(this)
     }
 
-    private class NativeRenderer : Renderer {
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+        NativeBridge.onTouch(event.x, event.y, event.action)
+        return true
+    }
 
-        external fun initGame()
-        external fun updateGame(deltaTime: Float)
+    override fun surfaceCreated(holder: SurfaceHolder) {
+        running = true
+        val assetManager = context.assets
+        renderThread = Thread {
+            val width = holder.surfaceFrame.width()
+            val height = holder.surfaceFrame.height()
+            (context as? android.app.Activity)?.let { activity ->
+                NativeBridge.initGame(activity, holder.surface, assetManager, width, height)
+            }
+            
+            var lastTime = System.nanoTime()
+            while (running) {
+                val now = System.nanoTime()
+                val delta = (now - lastTime) / 1_000_000_000f
+                lastTime = now
+                
+                NativeBridge.updateGame(delta)
 
-        private var lastTime = System.nanoTime()
+                if (NativeBridge.shouldQuit()) {
+                    (context as? android.app.Activity)?.finish()
+                    break
+                }
+            }
+            
+            NativeBridge.shutdownGame()
+        }.apply { name = "GameRenderThread" }
+        renderThread?.start()
+    }
 
-        override fun onSurfaceCreated(gl: GL10?, config: EGLConfig?) {
-            initGame()
-        }
+    override fun surfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) {
+        // Implementar cambio de resolución si es necesario
+    }
 
-        override fun onDrawFrame(gl: GL10?) {
-            val now = System.nanoTime()
-            val delta = (now - lastTime) / 1_000_000_000f
-            lastTime = now
-
-            updateGame(delta)
-        }
-
-        override fun onSurfaceChanged(gl: GL10?, width: Int, height: Int) {
-            // Luego lo mandamos a C++ si quieres viewport dinámico
+    override fun surfaceDestroyed(holder: SurfaceHolder) {
+        running = false
+        try {
+            renderThread?.join()
+        } catch (e: InterruptedException) {
+            e.printStackTrace()
         }
     }
 }

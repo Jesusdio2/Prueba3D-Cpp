@@ -1,4 +1,17 @@
-rootProject.name = "Prueba3D-Cpp"
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
 
-// Incluye el módulo Android
+rootProject.name = "Prueba3D-Cpp"
 include(":platform:android:app")

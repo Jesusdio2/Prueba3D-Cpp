@@ -1,22 +1,26 @@
+// platform/android/app/build.gradle.kts
 plugins {
     id("com.android.application")
-    kotlin("android")
+    id("org.jetbrains.kotlin.android")
 }
 
 android {
     namespace = "com.faes.prueba3d"
-    compileSdk = 36
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.faes.prueba3d"
-        minSdk = 24
-        targetSdk = 36
+        minSdk = 21
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
         externalNativeBuild {
             cmake {
-                cppFlags += "-std=c++17"
+                cppFlags += "-std=c++20"
+                cppFlags += "-DBX_CONFIG_DEBUG=1"
+                arguments += "-DANDROID_STL=c++_shared"
+                abiFilters += listOf("arm64-v8a", "x86_64")
             }
         }
     }
@@ -24,9 +28,19 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
+            externalNativeBuild {
+                cmake {
+                    cppFlags += "-DBX_CONFIG_DEBUG=0"
+                }
+            }
         }
         debug {
             isDebuggable = true
+            externalNativeBuild {
+                cmake {
+                    cppFlags += "-DBX_CONFIG_DEBUG=1"
+                }
+            }
         }
     }
 
@@ -35,33 +49,30 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
+    // Configuración estable para el target de la JVM
+    @Suppress("DEPRECATION")
     kotlinOptions {
         jvmTarget = "17"
     }
 
+    sourceSets {
+        getByName("main") {
+            assets.directories.add("../../../core/assets")
+        }
+    }
+
     externalNativeBuild {
         cmake {
-            // Path corrected to point to the root CMakeLists.txt
             path = file("../../../CMakeLists.txt")
         }
     }
 
     buildFeatures {
-        compose = true
+        prefab = true
     }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.3"
-    }
-}
-
-repositories {
-    google()
-    mavenCentral()
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.activity:activity-compose:1.9.0")
-    implementation("androidx.compose.material3:material3:1.2.0")
+    implementation("androidx.games:games-frame-pacing:2.1.3")
+    implementation("androidx.appcompat:appcompat:1.7.0")
 }

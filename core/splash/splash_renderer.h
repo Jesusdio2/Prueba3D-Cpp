@@ -1,6 +1,8 @@
 #pragma once
 
 #include "splash_texture.h"
+#include <bgfx/bgfx.h>
+#include <bx/math.h>
 
 class SplashRenderer {
 public:
@@ -8,13 +10,16 @@ public:
     ~SplashRenderer();
 
     void Init();
-    void Render(SplashTexture& tex);
+    void Shutdown();
+    void Render(SplashTexture& tex, bgfx::ViewId viewId = 0);
 
 private:
-    unsigned int shaderProgram = 0;
-    unsigned int vbo = 0;
-    unsigned int vao = 0;
+    void CreateShaderProgram();
 
-    unsigned int CompileShader(unsigned int type, const char* source);
-    unsigned int CreateShaderProgram(const char* vertexSource, const char* fragmentSource);
+    bgfx::ProgramHandle shaderProgram;
+    bgfx::VertexBufferHandle vbh;
+    bgfx::VertexLayout layout;
+    bgfx::UniformHandle s_texColor;  // Uniform para el sampler de textura
+
+    bool isValid;
 };

@@ -1,0 +1,3 @@
+/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/CMakeFiles/bimg-populate.dir
+/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/CMakeFiles/ALL_BUILD.dir
+/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/CMakeFiles/ZERO_CHECK.dir

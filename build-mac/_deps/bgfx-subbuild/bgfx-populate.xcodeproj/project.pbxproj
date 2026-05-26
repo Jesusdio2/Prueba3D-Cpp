@@ -1,0 +1,639 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		1E6079C2279627A363BA95A2 /* bgfx-populate */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 44AE735489664E1A9CA6416F /* Build configuration list for PBXAggregateTarget "bgfx-populate" */;
+			buildPhases = (
+				D080313453628515AD15E6A9 /* Generate bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-mkdir */,
+				3A29BBBC1D4C72F8D20D464A /* Generate bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-download */,
+				1B22ECDA052EE238AF5BFB36 /* Generate bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-update */,
+				D70E796CE196F069EB1E3C93 /* Generate bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-patch */,
+				98A7FB1E0C5D1AA0C185971E /* Generate bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-configure */,
+				2E92C5FEA61304EA4B1A74C7 /* Generate bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-build */,
+				E235E107288897F37C17E63C /* Generate bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-install */,
+				51F6BD458AC06CFDDD227245 /* Generate bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-test */,
+				DE31C8A56C5385C54427540E /* Generate CMakeFiles/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-complete */,
+				D7A291B04C74F8F5D905E1A0 /* Generate CMakeFiles/bgfx-populate */,
+			);
+			dependencies = (
+				0D8F49D9511549B7B970B608 /* PBXTargetDependency */,
+			);
+			name = "bgfx-populate";
+			productName = "bgfx-populate";
+		};
+		3613F63ED00433A02B5D2B39 /* ZERO_CHECK */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = BF61EB4B1ECC4FE7B5CCD8BF /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
+			buildPhases = (
+				06800D44052D9B7913B4B7B5 /* Generate CMakeFiles/ZERO_CHECK */,
+			);
+			dependencies = (
+			);
+			name = ZERO_CHECK;
+			productName = ZERO_CHECK;
+		};
+		9558BB06C4A78710A8AD3669 /* ALL_BUILD */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 4BDB60DC3EA04DAD9006BBD0 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
+			buildPhases = (
+				752B1763002F62FC0798876B /* Generate CMakeFiles/ALL_BUILD */,
+			);
+			dependencies = (
+				D7C96772CD6B4001B000A00A /* PBXTargetDependency */,
+				B3A6C128D941440384496384 /* PBXTargetDependency */,
+			);
+			name = ALL_BUILD;
+			productName = ALL_BUILD;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildStyle section */
+		291E2738501240B2A94C6FE7 /* Debug */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = Debug;
+		};
+/* End PBXBuildStyle section */
+
+/* Begin PBXContainerItemProxy section */
+		2EA5890B9E5B40BE8EE00B9E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 95C3B05C8E794C47B3E507B5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3613F63ED00433A02B5D2B39;
+			remoteInfo = ZERO_CHECK;
+		};
+		324E77604D644052A1811DF4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 95C3B05C8E794C47B3E507B5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3613F63ED00433A02B5D2B39;
+			remoteInfo = ZERO_CHECK;
+		};
+		770F0B990D4548E4A22A4CCB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 95C3B05C8E794C47B3E507B5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1E6079C2279627A363BA95A2;
+			remoteInfo = "bgfx-populate";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C9087AB393B4492683040CFE /* /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		F950E17FF9574C53B1AB4828 /* /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		123D68D662E3430AAFD4BAD0 /* bgfx-populate */ = {
+			isa = PBXGroup;
+			children = (
+				15B4DA3DA3F1445DA246FD81 /* CMake Rules */,
+				F950E17FF9574C53B1AB4828 /* /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/CMakeLists.txt */,
+			);
+			name = "bgfx-populate";
+			sourceTree = "<group>";
+		};
+		15B4DA3DA3F1445DA246FD81 /* CMake Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "CMake Rules";
+			sourceTree = "<group>";
+		};
+		2105DCAACC684B2D9487903A /* ALL_BUILD */ = {
+			isa = PBXGroup;
+			children = (
+				6EE31762A9E949CEBEF309DE /* CMake Rules */,
+				C9087AB393B4492683040CFE /* /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/CMakeLists.txt */,
+			);
+			name = ALL_BUILD;
+			sourceTree = "<group>";
+		};
+		5AD3BB3DE68942DFBF1C81BA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		62C9836A9F2945769A4182A6 = {
+			isa = PBXGroup;
+			children = (
+				E6483E79BC334AA285C4C2C2 /* ExternalProjectTargets */,
+				2105DCAACC684B2D9487903A /* ALL_BUILD */,
+				CA337F1D80F44664B4E1019F /* Products */,
+				5AD3BB3DE68942DFBF1C81BA /* Frameworks */,
+				DD602DC13DB04442A95CF7DC /* Resources */,
+			);
+			sourceTree = "<group>";
+		};
+		6EE31762A9E949CEBEF309DE /* CMake Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "CMake Rules";
+			sourceTree = "<group>";
+		};
+		80112C256BDE45C4AA8F170C /* bgfx-populate */ = {
+			isa = PBXGroup;
+			children = (
+				123D68D662E3430AAFD4BAD0 /* bgfx-populate */,
+			);
+			name = "bgfx-populate";
+			sourceTree = "<group>";
+		};
+		CA337F1D80F44664B4E1019F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DD602DC13DB04442A95CF7DC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		E6483E79BC334AA285C4C2C2 /* ExternalProjectTargets */ = {
+			isa = PBXGroup;
+			children = (
+				80112C256BDE45C4AA8F170C /* bgfx-populate */,
+			);
+			name = ExternalProjectTargets;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		95C3B05C8E794C47B3E507B5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 2630;
+			};
+			buildConfigurationList = DBC1BF3795314D69B0295B8B /* Build configuration list for PBXProject "bgfx-populate" */;
+			buildSettings = {
+			};
+			buildStyles = (
+				291E2738501240B2A94C6FE7 /* Debug */,
+			);
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 0;
+			mainGroup = 62C9836A9F2945769A4182A6;
+			projectDirPath = .;
+			projectRoot = "";
+			targets = (
+				9558BB06C4A78710A8AD3669 /* ALL_BUILD */,
+				1E6079C2279627A363BA95A2 /* bgfx-populate */,
+				3613F63ED00433A02B5D2B39 /* ZERO_CHECK */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		06800D44052D9B7913B4B7B5 /* Generate CMakeFiles/ZERO_CHECK */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate CMakeFiles/ZERO_CHECK";
+			outputPaths = (
+"/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/CMakeFiles/ZERO_CHECK"			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e
+if test \"$CONFIGURATION\" = \"Debug\"; then :
+  cd /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild
+  make -f /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/CMakeScripts/ReRunCMake.make
+fi
+";
+			showEnvVarsInLog = 0;
+		};
+		1B22ECDA052EE238AF5BFB36 /* Generate bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-update */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+"/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-download","/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/bgfx-populate-prefix/src/bgfx-populate-stamp/bgfx-populate-update-info.txt","/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/bgfx-populate-prefix/tmp/bgfx-populate-gitupdate.cmake"			);
+			name = "Generate bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-update";
+			outputPaths = (
+"/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-update"			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e
+if test \"$CONFIGURATION\" = \"Debug\"; then :
+  cd /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-src
+  /opt/homebrew/bin/cmake -Dcan_fetch=YES -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/bgfx-populate-prefix/tmp/bgfx-populate-gitupdate.cmake
+fi
+";
+			showEnvVarsInLog = 0;
+		};
+		2E92C5FEA61304EA4B1A74C7 /* Generate bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-build */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+"/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-configure"			);
+			name = "Generate bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-build";
+			outputPaths = (
+"/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-build"			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e
+if test \"$CONFIGURATION\" = \"Debug\"; then :
+  cd /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-build
+  /opt/homebrew/bin/cmake -E echo_append
+  /opt/homebrew/bin/cmake -E touch /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/bgfx-populate-prefix/src/bgfx-populate-stamp/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/bgfx-populate-build
+fi
+";
+			showEnvVarsInLog = 0;
+		};
+		3A29BBBC1D4C72F8D20D464A /* Generate bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-download */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+"/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-mkdir","/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/bgfx-populate-prefix/src/bgfx-populate-stamp/bgfx-populate-gitinfo.txt"			);
+			name = "Generate bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-download";
+			outputPaths = (
+"/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-download"			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e
+if test \"$CONFIGURATION\" = \"Debug\"; then :
+  cd /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps
+  /opt/homebrew/bin/cmake -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/bgfx-populate-prefix/tmp/bgfx-populate-gitclone.cmake
+  /opt/homebrew/bin/cmake -E touch /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/bgfx-populate-prefix/src/bgfx-populate-stamp/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/bgfx-populate-download
+fi
+";
+			showEnvVarsInLog = 0;
+		};
+		3C0110FC8322DE7E50886E21 = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+		51F6BD458AC06CFDDD227245 /* Generate bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-test */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+"/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-install"			);
+			name = "Generate bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-test";
+			outputPaths = (
+"/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-test"			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e
+if test \"$CONFIGURATION\" = \"Debug\"; then :
+  cd /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-build
+  /opt/homebrew/bin/cmake -E echo_append
+  /opt/homebrew/bin/cmake -E touch /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/bgfx-populate-prefix/src/bgfx-populate-stamp/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/bgfx-populate-test
+fi
+";
+			showEnvVarsInLog = 0;
+		};
+		6B0EE6202F01B4E7C714E4CB = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+		752B1763002F62FC0798876B /* Generate CMakeFiles/ALL_BUILD */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate CMakeFiles/ALL_BUILD";
+			outputPaths = (
+"/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/CMakeFiles/ALL_BUILD"			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e
+if test \"$CONFIGURATION\" = \"Debug\"; then :
+  cd /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild
+  echo Build\\ all\\ projects
+fi
+";
+			showEnvVarsInLog = 0;
+		};
+		98A7FB1E0C5D1AA0C185971E /* Generate bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-configure */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+"/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-patch","/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/bgfx-populate-prefix/tmp/bgfx-populate-cfgcmd.txt"			);
+			name = "Generate bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-configure";
+			outputPaths = (
+"/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-configure"			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e
+if test \"$CONFIGURATION\" = \"Debug\"; then :
+  cd /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-build
+  /opt/homebrew/bin/cmake -E echo_append
+  /opt/homebrew/bin/cmake -E touch /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/bgfx-populate-prefix/src/bgfx-populate-stamp/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/bgfx-populate-configure
+fi
+";
+			showEnvVarsInLog = 0;
+		};
+		9B50530E35CC49C82C2FACCF = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+		D080313453628515AD15E6A9 /* Generate bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-mkdir */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-mkdir";
+			outputPaths = (
+"/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-mkdir"			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e
+if test \"$CONFIGURATION\" = \"Debug\"; then :
+  cd /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild
+  /opt/homebrew/bin/cmake -Dcfgdir=/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME -P /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/bgfx-populate-prefix/tmp/bgfx-populate-mkdirs.cmake
+  /opt/homebrew/bin/cmake -E touch /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/bgfx-populate-prefix/src/bgfx-populate-stamp/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/bgfx-populate-mkdir
+fi
+";
+			showEnvVarsInLog = 0;
+		};
+		D70E796CE196F069EB1E3C93 /* Generate bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-patch */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+"/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-update","/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/bgfx-populate-prefix/src/bgfx-populate-stamp/bgfx-populate-patch-info.txt"			);
+			name = "Generate bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-patch";
+			outputPaths = (
+"/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-patch"			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e
+if test \"$CONFIGURATION\" = \"Debug\"; then :
+  cd /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild
+  /opt/homebrew/bin/cmake -E echo_append
+  /opt/homebrew/bin/cmake -E touch /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/bgfx-populate-prefix/src/bgfx-populate-stamp/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/bgfx-populate-patch
+fi
+";
+			showEnvVarsInLog = 0;
+		};
+		D7A291B04C74F8F5D905E1A0 /* Generate CMakeFiles/bgfx-populate */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+"/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/CMakeFiles/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-complete"			);
+			name = "Generate CMakeFiles/bgfx-populate";
+			outputPaths = (
+"/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/CMakeFiles/bgfx-populate"			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e
+if test \"$CONFIGURATION\" = \"Debug\"; then :
+  cd /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild
+fi
+";
+			showEnvVarsInLog = 0;
+		};
+		DE31C8A56C5385C54427540E /* Generate CMakeFiles/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-complete */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+"/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-build","/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-configure","/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-download","/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-install","/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-mkdir","/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-patch","/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-test","/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-update"			);
+			name = "Generate CMakeFiles/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-complete";
+			outputPaths = (
+"/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/CMakeFiles/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-complete"			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e
+if test \"$CONFIGURATION\" = \"Debug\"; then :
+  cd /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild
+  /opt/homebrew/bin/cmake -E make_directory /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/CMakeFiles/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME
+  /opt/homebrew/bin/cmake -E touch /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/CMakeFiles/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/bgfx-populate-complete
+  /opt/homebrew/bin/cmake -E touch /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/bgfx-populate-prefix/src/bgfx-populate-stamp/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/bgfx-populate-done
+fi
+";
+			showEnvVarsInLog = 0;
+		};
+		E235E107288897F37C17E63C /* Generate bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-install */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+"/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-build"			);
+			name = "Generate bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-install";
+			outputPaths = (
+"/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/bgfx-populate-prefix/src/bgfx-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bgfx-populate-install"			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e
+if test \"$CONFIGURATION\" = \"Debug\"; then :
+  cd /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-build
+  /opt/homebrew/bin/cmake -E echo_append
+  /opt/homebrew/bin/cmake -E touch /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/bgfx-populate-prefix/src/bgfx-populate-stamp/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/bgfx-populate-install
+fi
+";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0D8F49D9511549B7B970B608 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3613F63ED00433A02B5D2B39 /* ZERO_CHECK */;
+			targetProxy = 324E77604D644052A1811DF4 /* PBXContainerItemProxy */;
+		};
+		B3A6C128D941440384496384 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3613F63ED00433A02B5D2B39 /* ZERO_CHECK */;
+			targetProxy = 2EA5890B9E5B40BE8EE00B9E /* PBXContainerItemProxy */;
+		};
+		D7C96772CD6B4001B000A00A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1E6079C2279627A363BA95A2 /* bgfx-populate */;
+			targetProxy = 770F0B990D4548E4A22A4CCB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		40A24BCA6B0F4FE38D2A7353 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = ("","$(inherited)");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = "bgfx-populate";
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = Debug;
+		};
+		5BE756CCF474441692FAD6CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = ("","$(inherited)");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = Debug;
+		};
+		63EF884020DF467FA40D4F7C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = ("","$(inherited)");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = Debug;
+		};
+		C45F418829054CD6AA2F5D97 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = arm64;
+				SDKROOT = "";
+				SYMROOT = "/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bgfx-subbuild/build";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		44AE735489664E1A9CA6416F /* Build configuration list for PBXAggregateTarget "bgfx-populate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				40A24BCA6B0F4FE38D2A7353 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		4BDB60DC3EA04DAD9006BBD0 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5BE756CCF474441692FAD6CA /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		BF61EB4B1ECC4FE7B5CCD8BF /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63EF884020DF467FA40D4F7C /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		DBC1BF3795314D69B0295B8B /* Build configuration list for PBXProject "bgfx-populate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C45F418829054CD6AA2F5D97 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 95C3B05C8E794C47B3E507B5 /* Project object */;
+}

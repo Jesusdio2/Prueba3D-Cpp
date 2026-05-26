@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bx-subbuild/CMakeFiles/bx-populate"
+		},
+		{
+			"file" : "/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bx-subbuild/CMakeFiles/bx-populate.rule"
+		},
+		{
+			"file" : "/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bx-subbuild/CMakeFiles/CMakeFiles/bx-populate-complete.rule"
+		},
+		{
+			"file" : "/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bx-subbuild/bx-populate-prefix/src/bx-populate-stamp/CMakeFiles/bx-populate-build.rule"
+		},
+		{
+			"file" : "/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bx-subbuild/bx-populate-prefix/src/bx-populate-stamp/CMakeFiles/bx-populate-configure.rule"
+		},
+		{
+			"file" : "/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bx-subbuild/bx-populate-prefix/src/bx-populate-stamp/CMakeFiles/bx-populate-download.rule"
+		},
+		{
+			"file" : "/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bx-subbuild/bx-populate-prefix/src/bx-populate-stamp/CMakeFiles/bx-populate-install.rule"
+		},
+		{
+			"file" : "/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bx-subbuild/bx-populate-prefix/src/bx-populate-stamp/CMakeFiles/bx-populate-mkdir.rule"
+		},
+		{
+			"file" : "/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bx-subbuild/bx-populate-prefix/src/bx-populate-stamp/CMakeFiles/bx-populate-patch.rule"
+		},
+		{
+			"file" : "/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bx-subbuild/bx-populate-prefix/src/bx-populate-stamp/CMakeFiles/bx-populate-test.rule"
+		},
+		{
+			"file" : "/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bx-subbuild/bx-populate-prefix/src/bx-populate-stamp/CMakeFiles/bx-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"bx-populate"
+		],
+		"name" : "bx-populate"
+	}
+}

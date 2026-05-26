@@ -1,0 +1,639 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		2DF38705DBA7FE1D59BDF37C /* bimg-populate */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = B90E42948BD6428BB2FADD4C /* Build configuration list for PBXAggregateTarget "bimg-populate" */;
+			buildPhases = (
+				A52FF209DCB109DD93CB9D26 /* Generate bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-mkdir */,
+				85474325459E03DB8D2B7F46 /* Generate bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-download */,
+				8A095A442509BDD2ABFDF481 /* Generate bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-update */,
+				6CCAEF98840B744ADEA580AA /* Generate bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-patch */,
+				E66E9CF603FBE902898BEDA7 /* Generate bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-configure */,
+				D59D7F285FC4E02CFCEE7163 /* Generate bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-build */,
+				F05F534E1C706B9E33E836C5 /* Generate bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-install */,
+				7CCFD52771C559C75D990C10 /* Generate bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-test */,
+				040F9435E5582BEBF222DDFF /* Generate CMakeFiles/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-complete */,
+				90CC25C20603B43D032337CF /* Generate CMakeFiles/bimg-populate */,
+			);
+			dependencies = (
+				DCFA081FF5EA4948A2787FDD /* PBXTargetDependency */,
+			);
+			name = "bimg-populate";
+			productName = "bimg-populate";
+		};
+		56355EEE7447EE403DCE756F /* ALL_BUILD */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = ED415BBA3D964A47AE54BBC3 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
+			buildPhases = (
+				8DC7BBCB79492EF81EC619FC /* Generate CMakeFiles/ALL_BUILD */,
+			);
+			dependencies = (
+				1BA3A95710E5473CB40D29F3 /* PBXTargetDependency */,
+				FA851E08B9EC4DEF9F7B8173 /* PBXTargetDependency */,
+			);
+			name = ALL_BUILD;
+			productName = ALL_BUILD;
+		};
+		E787F37F5F9CA475C328EAC9 /* ZERO_CHECK */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 8BCED66F30314797936FB82D /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
+			buildPhases = (
+				98E4F0B1CA4BAAB79EE0826E /* Generate CMakeFiles/ZERO_CHECK */,
+			);
+			dependencies = (
+			);
+			name = ZERO_CHECK;
+			productName = ZERO_CHECK;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildStyle section */
+		9C256B2475A54D6D981BE0AA /* Debug */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = Debug;
+		};
+/* End PBXBuildStyle section */
+
+/* Begin PBXContainerItemProxy section */
+		030E535D7C7D443695947AB0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 51B035DD253B40CAA472B7EB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E787F37F5F9CA475C328EAC9;
+			remoteInfo = ZERO_CHECK;
+		};
+		7E545818269F4E78B01E2516 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 51B035DD253B40CAA472B7EB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E787F37F5F9CA475C328EAC9;
+			remoteInfo = ZERO_CHECK;
+		};
+		C21BACA358B54759BC6DDCE7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 51B035DD253B40CAA472B7EB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2DF38705DBA7FE1D59BDF37C;
+			remoteInfo = "bimg-populate";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		434DA1B123DF472EA875C281 /* /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		CE316F0E377E42C08F69528A /* /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		1171549E23B04E6698047C66 /* ExternalProjectTargets */ = {
+			isa = PBXGroup;
+			children = (
+				3AF67DDE5A4E40DE9CBB9E76 /* bimg-populate */,
+			);
+			name = ExternalProjectTargets;
+			sourceTree = "<group>";
+		};
+		11BD26751D7547A78FE9D350 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2C0E27A4EF9C4D92B3E7C05D /* CMake Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "CMake Rules";
+			sourceTree = "<group>";
+		};
+		3AF67DDE5A4E40DE9CBB9E76 /* bimg-populate */ = {
+			isa = PBXGroup;
+			children = (
+				CF76CEAFA9CD449B833FE10D /* bimg-populate */,
+			);
+			name = "bimg-populate";
+			sourceTree = "<group>";
+		};
+		4DF6ECD4957D43D4A1BCA09F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		66E7DB85EA214EA083B1A179 /* CMake Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "CMake Rules";
+			sourceTree = "<group>";
+		};
+		7464D7768FE649E9AD46314B = {
+			isa = PBXGroup;
+			children = (
+				1171549E23B04E6698047C66 /* ExternalProjectTargets */,
+				83DC3F7B3CD64AC897AC9F6E /* ALL_BUILD */,
+				CB44006BAE884EADB35F04B4 /* Products */,
+				11BD26751D7547A78FE9D350 /* Frameworks */,
+				4DF6ECD4957D43D4A1BCA09F /* Resources */,
+			);
+			sourceTree = "<group>";
+		};
+		83DC3F7B3CD64AC897AC9F6E /* ALL_BUILD */ = {
+			isa = PBXGroup;
+			children = (
+				2C0E27A4EF9C4D92B3E7C05D /* CMake Rules */,
+				434DA1B123DF472EA875C281 /* /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/CMakeLists.txt */,
+			);
+			name = ALL_BUILD;
+			sourceTree = "<group>";
+		};
+		CB44006BAE884EADB35F04B4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CF76CEAFA9CD449B833FE10D /* bimg-populate */ = {
+			isa = PBXGroup;
+			children = (
+				66E7DB85EA214EA083B1A179 /* CMake Rules */,
+				CE316F0E377E42C08F69528A /* /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/CMakeLists.txt */,
+			);
+			name = "bimg-populate";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		51B035DD253B40CAA472B7EB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 2630;
+			};
+			buildConfigurationList = 7C2022EDD0A24B8A84AC3C6F /* Build configuration list for PBXProject "bimg-populate" */;
+			buildSettings = {
+			};
+			buildStyles = (
+				9C256B2475A54D6D981BE0AA /* Debug */,
+			);
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 0;
+			mainGroup = 7464D7768FE649E9AD46314B;
+			projectDirPath = .;
+			projectRoot = "";
+			targets = (
+				56355EEE7447EE403DCE756F /* ALL_BUILD */,
+				2DF38705DBA7FE1D59BDF37C /* bimg-populate */,
+				E787F37F5F9CA475C328EAC9 /* ZERO_CHECK */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		040F9435E5582BEBF222DDFF /* Generate CMakeFiles/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-complete */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+"/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-build","/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-configure","/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-download","/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-install","/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-mkdir","/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-patch","/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-test","/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-update"			);
+			name = "Generate CMakeFiles/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-complete";
+			outputPaths = (
+"/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/CMakeFiles/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-complete"			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e
+if test \"$CONFIGURATION\" = \"Debug\"; then :
+  cd /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild
+  /opt/homebrew/bin/cmake -E make_directory /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/CMakeFiles/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME
+  /opt/homebrew/bin/cmake -E touch /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/CMakeFiles/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/bimg-populate-complete
+  /opt/homebrew/bin/cmake -E touch /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/bimg-populate-prefix/src/bimg-populate-stamp/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/bimg-populate-done
+fi
+";
+			showEnvVarsInLog = 0;
+		};
+		3C0110FC8322DE7E50886E21 = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+		6CCAEF98840B744ADEA580AA /* Generate bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-patch */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+"/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-update","/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/bimg-populate-prefix/src/bimg-populate-stamp/bimg-populate-patch-info.txt"			);
+			name = "Generate bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-patch";
+			outputPaths = (
+"/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-patch"			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e
+if test \"$CONFIGURATION\" = \"Debug\"; then :
+  cd /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild
+  /opt/homebrew/bin/cmake -E echo_append
+  /opt/homebrew/bin/cmake -E touch /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/bimg-populate-prefix/src/bimg-populate-stamp/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/bimg-populate-patch
+fi
+";
+			showEnvVarsInLog = 0;
+		};
+		7CCFD52771C559C75D990C10 /* Generate bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-test */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+"/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-install"			);
+			name = "Generate bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-test";
+			outputPaths = (
+"/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-test"			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e
+if test \"$CONFIGURATION\" = \"Debug\"; then :
+  cd /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-build
+  /opt/homebrew/bin/cmake -E echo_append
+  /opt/homebrew/bin/cmake -E touch /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/bimg-populate-prefix/src/bimg-populate-stamp/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/bimg-populate-test
+fi
+";
+			showEnvVarsInLog = 0;
+		};
+		85474325459E03DB8D2B7F46 /* Generate bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-download */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+"/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-mkdir","/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/bimg-populate-prefix/src/bimg-populate-stamp/bimg-populate-gitinfo.txt"			);
+			name = "Generate bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-download";
+			outputPaths = (
+"/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-download"			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e
+if test \"$CONFIGURATION\" = \"Debug\"; then :
+  cd /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps
+  /opt/homebrew/bin/cmake -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/bimg-populate-prefix/tmp/bimg-populate-gitclone.cmake
+  /opt/homebrew/bin/cmake -E touch /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/bimg-populate-prefix/src/bimg-populate-stamp/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/bimg-populate-download
+fi
+";
+			showEnvVarsInLog = 0;
+		};
+		8A095A442509BDD2ABFDF481 /* Generate bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-update */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+"/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-download","/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/bimg-populate-prefix/src/bimg-populate-stamp/bimg-populate-update-info.txt","/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/bimg-populate-prefix/tmp/bimg-populate-gitupdate.cmake"			);
+			name = "Generate bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-update";
+			outputPaths = (
+"/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-update"			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e
+if test \"$CONFIGURATION\" = \"Debug\"; then :
+  cd /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-src
+  /opt/homebrew/bin/cmake -Dcan_fetch=YES -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/bimg-populate-prefix/tmp/bimg-populate-gitupdate.cmake
+fi
+";
+			showEnvVarsInLog = 0;
+		};
+		8D6D561BB981B1FD52172CF3 = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+		8DC7BBCB79492EF81EC619FC /* Generate CMakeFiles/ALL_BUILD */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate CMakeFiles/ALL_BUILD";
+			outputPaths = (
+"/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/CMakeFiles/ALL_BUILD"			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e
+if test \"$CONFIGURATION\" = \"Debug\"; then :
+  cd /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild
+  echo Build\\ all\\ projects
+fi
+";
+			showEnvVarsInLog = 0;
+		};
+		90CC25C20603B43D032337CF /* Generate CMakeFiles/bimg-populate */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+"/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/CMakeFiles/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-complete"			);
+			name = "Generate CMakeFiles/bimg-populate";
+			outputPaths = (
+"/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/CMakeFiles/bimg-populate"			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e
+if test \"$CONFIGURATION\" = \"Debug\"; then :
+  cd /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild
+fi
+";
+			showEnvVarsInLog = 0;
+		};
+		98E4F0B1CA4BAAB79EE0826E /* Generate CMakeFiles/ZERO_CHECK */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate CMakeFiles/ZERO_CHECK";
+			outputPaths = (
+"/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/CMakeFiles/ZERO_CHECK"			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e
+if test \"$CONFIGURATION\" = \"Debug\"; then :
+  cd /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild
+  make -f /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/CMakeScripts/ReRunCMake.make
+fi
+";
+			showEnvVarsInLog = 0;
+		};
+		9B50530E35CC49C82C2FACCF = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+		A52FF209DCB109DD93CB9D26 /* Generate bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-mkdir */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-mkdir";
+			outputPaths = (
+"/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-mkdir"			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e
+if test \"$CONFIGURATION\" = \"Debug\"; then :
+  cd /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild
+  /opt/homebrew/bin/cmake -Dcfgdir=/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME -P /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/bimg-populate-prefix/tmp/bimg-populate-mkdirs.cmake
+  /opt/homebrew/bin/cmake -E touch /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/bimg-populate-prefix/src/bimg-populate-stamp/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/bimg-populate-mkdir
+fi
+";
+			showEnvVarsInLog = 0;
+		};
+		D59D7F285FC4E02CFCEE7163 /* Generate bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-build */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+"/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-configure"			);
+			name = "Generate bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-build";
+			outputPaths = (
+"/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-build"			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e
+if test \"$CONFIGURATION\" = \"Debug\"; then :
+  cd /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-build
+  /opt/homebrew/bin/cmake -E echo_append
+  /opt/homebrew/bin/cmake -E touch /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/bimg-populate-prefix/src/bimg-populate-stamp/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/bimg-populate-build
+fi
+";
+			showEnvVarsInLog = 0;
+		};
+		E66E9CF603FBE902898BEDA7 /* Generate bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-configure */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+"/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-patch","/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/bimg-populate-prefix/tmp/bimg-populate-cfgcmd.txt"			);
+			name = "Generate bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-configure";
+			outputPaths = (
+"/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-configure"			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e
+if test \"$CONFIGURATION\" = \"Debug\"; then :
+  cd /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-build
+  /opt/homebrew/bin/cmake -E echo_append
+  /opt/homebrew/bin/cmake -E touch /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/bimg-populate-prefix/src/bimg-populate-stamp/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/bimg-populate-configure
+fi
+";
+			showEnvVarsInLog = 0;
+		};
+		F05F534E1C706B9E33E836C5 /* Generate bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-install */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+"/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-build"			);
+			name = "Generate bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-install";
+			outputPaths = (
+"/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/bimg-populate-prefix/src/bimg-populate-stamp/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/bimg-populate-install"			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e
+if test \"$CONFIGURATION\" = \"Debug\"; then :
+  cd /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-build
+  /opt/homebrew/bin/cmake -E echo_append
+  /opt/homebrew/bin/cmake -E touch /Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/bimg-populate-prefix/src/bimg-populate-stamp/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/bimg-populate-install
+fi
+";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1BA3A95710E5473CB40D29F3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2DF38705DBA7FE1D59BDF37C /* bimg-populate */;
+			targetProxy = C21BACA358B54759BC6DDCE7 /* PBXContainerItemProxy */;
+		};
+		DCFA081FF5EA4948A2787FDD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E787F37F5F9CA475C328EAC9 /* ZERO_CHECK */;
+			targetProxy = 030E535D7C7D443695947AB0 /* PBXContainerItemProxy */;
+		};
+		FA851E08B9EC4DEF9F7B8173 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E787F37F5F9CA475C328EAC9 /* ZERO_CHECK */;
+			targetProxy = 7E545818269F4E78B01E2516 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		07BBC4E9B0154E58A9382B7B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = ("","$(inherited)");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = "bimg-populate";
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = Debug;
+		};
+		25D92D65810D49098AE15FFE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = ("","$(inherited)");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = Debug;
+		};
+		3F193E1C419B413999308E82 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = arm64;
+				SDKROOT = "";
+				SYMROOT = "/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-mac/_deps/bimg-subbuild/build";
+			};
+			name = Debug;
+		};
+		BE2805C6D252448CA73E05FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = ("","$(inherited)");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7C2022EDD0A24B8A84AC3C6F /* Build configuration list for PBXProject "bimg-populate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F193E1C419B413999308E82 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		8BCED66F30314797936FB82D /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE2805C6D252448CA73E05FC /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B90E42948BD6428BB2FADD4C /* Build configuration list for PBXAggregateTarget "bimg-populate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				07BBC4E9B0154E58A9382B7B /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		ED415BBA3D964A47AE54BBC3 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				25D92D65810D49098AE15FFE /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 51B035DD253B40CAA472B7EB /* Project object */;
+}
