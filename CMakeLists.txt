@@ -1,38 +1,41 @@
 cmake_minimum_required(VERSION 3.20)
-project(Prueba3D LANGUAGES CXX OBJCXX)
+project(Prueba3D LANGUAGES CXX)
 
-# 🔥 ELIMINADO EL C++20 GLOBAL PARA QUE NO ROMPA BGFX/BX
+# Si estamos en Apple, habilitamos Objective-C++
+if (APPLE)
+    enable_language(OBJCXX)
+endif()
 
 # 🔥 DEFINICIONES GLOBALES PARA BGFX
 add_compile_definitions(BX_CONFIG_DEBUG=1)
 
-# 1. Configurar y Descargar dependencias oficiales de Branimir Karadžić
+# 1. Configurar y Descargar dependencias oficiales
 include(FetchContent)
 
 FetchContent_Declare(
-        bx
-        GIT_REPOSITORY https://github.com/bkaradzic/bx.git
-        GIT_TAG        master
+  bx
+  GIT_REPOSITORY https://github.com/bkaradzic/bx.git
+  GIT_TAG master
 )
+
 FetchContent_Declare(
-        bimg
-        GIT_REPOSITORY https://github.com/bkaradzic/bimg.git
-        GIT_TAG        master
+  bimg
+  GIT_REPOSITORY https://github.com/bkaradzic/bimg.git
+  GIT_TAG master
 )
+
 FetchContent_Declare(
-        bgfx
-        GIT_REPOSITORY https://github.com/bkaradzic/bgfx.git
-        GIT_TAG        master
+  bgfx
+  GIT_REPOSITORY https://github.com/bkaradzic/bgfx.git
+  GIT_TAG master
 )
 
-# Descarga moderna y limpia recomendada por CMake
-FetchContent_MakeAvailable(bx bimg bgfx)
+# Descargamos los archivos pero NO intentamos usar sus CMakeLists (porque no tienen en la raíz)
+FetchContent_Populate(bx)
+FetchContent_Populate(bimg)
+FetchContent_Populate(bgfx)
 
-# 🛠️ CONECTAR LOS SCRIPT DE CMAKE OFICIALES DE BGFX:
-add_subdirectory(${bx_SOURCE_DIR}/cmake ${bx_BINARY_DIR}_build)
-add_subdirectory(${bgfx_SOURCE_DIR}/cmake ${bgfx_BINARY_DIR}_build)
-
-# 2. Configurar el CORE (Tu motor - Aquí adentro sí se fuerza C++20 de forma aislada)
+# 2. Configurar el CORE (Éste usará bgfx_cmake.cmake para definir los targets)
 add_subdirectory(core)
 
 # 3. Detectar Plataforma
@@ -40,12 +43,12 @@ if (ANDROID)
     message(STATUS "Configurando para Android")
     add_subdirectory(platform/android)
 
-elseif (WIN32)
-    message(STATUS "Configurando para Windows/UWP")
-    add_subdirectory(platform/uwp)
-
 elseif (APPLE)
     message(STATUS "Configurando para Apple")
     set(BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
     add_subdirectory(platform/apple)
+
+elseif (WIN32)
+    message(STATUS "Configurando para Windows/UWP")
+    add_subdirectory(platform/uwp)
 endif()
