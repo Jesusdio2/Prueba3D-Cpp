@@ -31,9 +31,6 @@ Java_com_faes_prueba3d_NativeBridge_initGame(JNIEnv* env, jobject, jobject activ
 
 JNIEXPORT void JNICALL
 Java_com_faes_prueba3d_NativeBridge_updateGame(JNIEnv*, jobject, jfloat delta) {
-    // Para OpenGL, Swappy normalmente requiere reemplazar eglSwapBuffers con SwappyGL_swap.
-    // Dado que bgfx maneja el swap internamente, la inicialización previa ya ayuda
-    // a que el sistema operativo ajuste la tasa de refresco (vía ANativeWindow_setFrameRate).
     UpdateGame3D(delta);
 }
 
@@ -51,6 +48,23 @@ Java_com_faes_prueba3d_NativeBridge_setGameState(JNIEnv*, jobject, jint state) {
 JNIEXPORT void JNICALL
 Java_com_faes_prueba3d_NativeBridge_onTouch(JNIEnv*, jobject, jfloat x, jfloat y, jint action) {
     OnTouch(x, y, action);
+}
+
+JNIEXPORT jboolean JNICALL
+Java_com_faes_prueba3d_NativeBridge_onKeyEvent(JNIEnv*, jobject, jint keyCode, jboolean isPressed) {
+    // 19 = DPAD_UP, 20 = DPAD_DOWN, 21 = DPAD_LEFT, 22 = DPAD_RIGHT, 23 = DPAD_CENTER, 66 = ENTER, 4 = BACK
+    // En un juego real, pasaríamos el código a C++ para manejarlo allí
+    if (isPressed) {
+        if (keyCode == 23 || keyCode == 66) { // Center o Enter
+            OnTouch(0, 0, 0); // Simular un touch para el botón JUGAR en el menú
+            return true;
+        }
+        if (keyCode == 4) { // Back
+            SetGameState(1); // Volver al menú (MENU = 1)
+            return true;
+        }
+    }
+    return false;
 }
 
 JNIEXPORT jboolean JNICALL

@@ -7,6 +7,7 @@ import android.view.SurfaceHolder
 import android.view.SurfaceView
 
 import android.view.MotionEvent
+import android.view.KeyEvent
 
 class GameSurface @JvmOverloads constructor(
     context: Context,
@@ -18,11 +19,24 @@ class GameSurface @JvmOverloads constructor(
 
     init {
         holder.addCallback(this)
+        isFocusable = true
+        isFocusableInTouchMode = true
+        requestFocus()
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
         NativeBridge.onTouch(event.x, event.y, event.action)
         return true
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (NativeBridge.onKeyEvent(keyCode, true)) return true
+        return super.onKeyDown(keyCode, event)
+    }
+
+    override fun onKeyUp(keyCode: Int, event: KeyEvent?): Boolean {
+        if (NativeBridge.onKeyEvent(keyCode, false)) return true
+        return super.onKeyUp(keyCode, event)
     }
 
     override fun surfaceCreated(holder: SurfaceHolder) {

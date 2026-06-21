@@ -3,19 +3,22 @@
 #include "splash/splash_texture.h"
 #include "splash/splash_renderer.h"
 #include "renderer/text_renderer.h"
+#include "logger.h"
 #include <bgfx/bgfx.h>
 #include <bx/bx.h>
 #include <bx/math.h>
-#include <android/log.h>
-#include <android/asset_manager.h>
-#include <android/asset_manager_jni.h>
 #include <vector>
 
-#define LOGE(...) __android_log_print(ANDROID_LOG_ERROR, "Game3D", __VA_ARGS__)
-#define LOGI(...) __android_log_print(ANDROID_LOG_INFO, "Game3D", __VA_ARGS__)
+#ifdef __ANDROID__
+#include <android/asset_manager.h>
+#include <android/asset_manager_jni.h>
+typedef AAssetManager AssetManager;
+#else
+typedef void AssetManager;
+#endif
 
 static Scene* mainScene = nullptr;
-static AAssetManager* gAssetManager = nullptr;
+static AssetManager* gAssetManager = nullptr;
 static GameState state = GameState::SPLASH;
 static float splashTime = 0.0f;
 static bool shouldQuit = false;
@@ -94,34 +97,27 @@ EXPORT_API void UpdateGame3D(float deltaTime) {
         bgfx::setViewRect(0, 0, 0, (uint16_t)screenWidth, (uint16_t)screenHeight);
         bgfx::touch(0);
 
-        // Renderizado de botones (Views 1, 2, 3) con coordenadas físicas
-        ViewRect r1 = getPhysicalRect(800, 400, 320, 80);
-        bgfx::setViewRect(1, r1.x, r1.y, r1.w, r1.h);
-        splashRenderer.Render(buttonTex, 1);
-
-        ViewRect r2 = getPhysicalRect(800, 500, 320, 80);
-        bgfx::setViewRect(2, r2.x, r2.y, r2.w, r2.h);
-        splashRenderer.Render(buttonTex, 2);
-
-        ViewRect r3 = getPhysicalRect(800, 600, 320, 80);
-        bgfx::setViewRect(3, r3.x, r3.y, r3.w, r3.h);
-        splashRenderer.Render(buttonTex, 3);
-
-        // Renderizado de Texto (View 255 - La última posible para asegurar orden)
+        // Renderizado de Texto e Interfaz (View 255)
         bgfx::setViewMode(255, bgfx::ViewMode::Sequential);
         bgfx::setViewClear(255, BGFX_CLEAR_NONE);
         bgfx::setViewRect(255, 0, 0, (uint16_t)screenWidth, (uint16_t)screenHeight);
 
-        textRenderer.RenderText("JUGAR", 880, 455, 0xffffffff, 255);
-        textRenderer.RenderText("OPCIONES", 840, 555, 0xffffffff, 255);
-        textRenderer.RenderText("SALIR", 885, 655, 0xffffffff, 255);
+        // Botón JUGAR (View 1)
+        ViewRect r1 = getPhysicalRect(800, 400, 320, 120);
+        bgfx::setViewRect(1, r1.x, r1.y, r1.w, r1.h);
+        bgfx::setViewClear(1, BGFX_CLEAR_NONE);
+        splashRenderer.Render(buttonTex, 1);
+
+        // Texto encima (View 255)
+        textRenderer.RenderText("JUGAR", 880, 480, 0xffffffff, 255);
+        textRenderer.RenderText("PULSA [ENTER] O TOCA", 780, 800, 0xaaaaaaff, 255);
     }
     else if (state == GameState::IN_GAME) {
         mainScene->Update(deltaTime);
         bgfx::setViewClear(0, BGFX_CLEAR_COLOR | BGFX_CLEAR_DEPTH, 0x000000ff, 1.0f, 0);
         bgfx::setViewRect(0, 0, 0, (uint16_t)screenWidth, (uint16_t)screenHeight);
         bgfx::touch(0);
-        // mainScene->Render();
+        mainScene->Render(screenWidth, screenHeight);
     }
 
     bgfx::frame();
@@ -143,13 +139,18 @@ EXPORT_API void SetGameState(int state) {
 }
 
 EXPORT_API void OnTouch(float x, float y, int action) {
-    if (state == GameState::MENU && action == 0) { // ACTION_DOWN
-        float lx = x * 1920.0f / (float)screenWidth;
-        float ly = y * 1080.0f / (float)screenHeight;
+    if (action == 0) { // ACTION_DOWN
+        if (state == GameState::MENU) {
+            float lx = x * 1920.0f / (float)screenWidth;
+            float ly = y * 1080.0f / (float)screenHeight;
 
-        if (lx > 800 && lx < 1120) {
-            if (ly > 400 && ly < 480) state = GameState::IN_GAME;
-            else if (ly > 600 && ly < 680) shouldQuit = true;
+            if (lx > 800 && lx < 1120) {
+                if (ly > 400 && ly < 480) state = GameState::IN_GAME;
+                else if (ly > 600 && ly < 680) shouldQuit = true;
+            }
+        }
+        else if (state == GameState::IN_GAME) {
+            state = GameState::MENU;
         }
     }
 }

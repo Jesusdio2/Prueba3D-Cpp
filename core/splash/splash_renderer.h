@@ -18,6 +18,7 @@ private:
 
     bgfx::ProgramHandle shaderProgram;
     bgfx::VertexBufferHandle vbh;
+    bgfx::IndexBufferHandle m_ibh;
     bgfx::VertexLayout layout;
     bgfx::UniformHandle s_texColor;  // Uniform para el sampler de textura
 

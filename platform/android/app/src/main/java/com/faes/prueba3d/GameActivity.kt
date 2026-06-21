@@ -1,15 +1,18 @@
 package com.faes.prueba3d
 
+import android.app.Activity
+import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
+import android.view.KeyEvent
 import android.view.WindowManager
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AlertDialog
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 
-class GameActivity : AppCompatActivity() {
+class GameActivity : Activity() {
+
+    private lateinit var gameSurface: GameSurface
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,20 +24,20 @@ class GameActivity : AppCompatActivity() {
         } catch (e: UnsatisfiedLinkError) {
             Log.e("GameActivity", "No se encontró la librería nativa: ${e.message}")
 
-            // Mostrar la advertencia visual retrocompatible usando AppCompat
+            // Mostrar la advertencia visual retrocompatible
             AlertDialog.Builder(this)
                 .setTitle("Error Crítico")
                 .setMessage("No se pudieron cargar los componentes gráficos de C++. La aplicación se cerrará.")
                 .setCancelable(false)
                 .setPositiveButton("Aceptar") { _, _ ->
-                    finish() // Cierra la actividad limpiamente
+                    finish()
                 }
                 .show()
 
-            return // Detiene la ejecución para no intentar renderizar nada
+            return
         }
 
-        // 2. Configuración de pantalla completa (Inmersiva) si la librería cargó con éxito
+        // 2. Configuración de pantalla completa (Inmersiva)
         WindowCompat.setDecorFitsSystemWindows(window, false)
 
         val controller = WindowCompat.getInsetsController(window, window.decorView)
@@ -47,8 +50,18 @@ class GameActivity : AppCompatActivity() {
                 WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES
         }
 
-        // 3. Inflar directamente tu superficie nativa sin intermediarios de Compose
-        val gameSurface = GameSurface(this)
+        // 3. Inflar superficie
+        gameSurface = GameSurface(this)
         setContentView(gameSurface)
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (NativeBridge.onKeyEvent(keyCode, true)) return true
+        return super.onKeyDown(keyCode, event)
+    }
+
+    override fun onKeyUp(keyCode: Int, event: KeyEvent?): Boolean {
+        if (NativeBridge.onKeyEvent(keyCode, false)) return true
+        return super.onKeyUp(keyCode, event)
     }
 }

@@ -3,12 +3,13 @@
 #include <stb/stb_truetype.h>
 #include <bgfx/bgfx.h>
 #include <bx/math.h>
-#include <android/log.h>
-#include <android/asset_manager.h>
+#include "../logger.h"
 #include <vector>
+#include <fstream>
 
-#define LOGE(...) __android_log_print(ANDROID_LOG_ERROR, "TextRenderer", __VA_ARGS__)
-#define LOGI(...) __android_log_print(ANDROID_LOG_INFO, "TextRenderer", __VA_ARGS__)
+#ifdef __ANDROID__
+#include <android/asset_manager.h>
+#endif
 
 bgfx::VertexLayout TextVertex::layout;
 
@@ -103,6 +104,7 @@ bool TextRenderer::Init(const std::string& fontPath, float fontSize, void* asset
 
     // Cargar archivo TTF
     std::vector<uint8_t> fontData;
+#ifdef __ANDROID__
     if (assetManager) {
         AAssetManager* am = (AAssetManager*)assetManager;
         AAsset* asset = AAssetManager_open(am, fontPath.c_str(), AASSET_MODE_BUFFER);
@@ -113,6 +115,17 @@ bool TextRenderer::Init(const std::string& fontPath, float fontSize, void* asset
             AAsset_close(asset);
         }
     }
+#else
+    std::ifstream file(fontPath, std::ios::binary | std::ios::ate);
+    if (file.is_open()) {
+        std::streamsize size = file.tellg();
+        file.seekg(0, std::ios::beg);
+        fontData.resize(size);
+        if (!file.read((char*)fontData.data(), size)) {
+            fontData.clear();
+        }
+    }
+#endif
 
     if (fontData.empty()) {
         LOGE("No se pudo cargar la fuente: %s", fontPath.c_str());
@@ -191,12 +204,12 @@ void TextRenderer::RenderText(const std::string& text, float x, float y, uint32_
         float y1 = y0 + g.height;
 
         vertices.push_back({x0, y0, g.x0, g.y0, color});
-        vertices.push_back({x0, y1, g.x0, g.y1, color});
         vertices.push_back({x1, y0, g.x1, g.y0, color});
+        vertices.push_back({x0, y1, g.x0, g.y1, color});
 
         vertices.push_back({x1, y0, g.x1, g.y0, color});
-        vertices.push_back({x0, y1, g.x0, g.y1, color});
         vertices.push_back({x1, y1, g.x1, g.y1, color});
+        vertices.push_back({x0, y1, g.x0, g.y1, color});
 
         curX += g.xadvance;
     }

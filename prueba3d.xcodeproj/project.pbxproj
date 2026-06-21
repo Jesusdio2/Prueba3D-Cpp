@@ -12,9 +12,59 @@
 		0BFB68D22FC6140100E7EDFB /* prueba3d.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = prueba3d.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		0BF463772FC9F75A0073DBC1 /* Exceptions for "prueba3d macOS" folder in "prueba3d macOS" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"/Localized: prueba3d tvOS/LaunchScreen.storyboard",
+				"/Localized: prueba3d tvOS/Main.storyboard",
+				"prueba3d tvOS/AppDelegate.swift",
+				"prueba3d tvOS/GameViewController.swift",
+				"prueba3d-macOS-Info.plist",
+			);
+			target = 0BFB68D12FC6140100E7EDFB /* prueba3d macOS */;
+		};
+		0BF4637B2FC9FA280073DBC1 /* Exceptions for "prueba3d Shared" folder in "prueba3d iOS" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Prueba3D-Logo.icon",
+			);
+			target = 0BFB68B02FC6140100E7EDFB /* prueba3d iOS */;
+		};
+		0BF4637C2FC9FA280073DBC1 /* Exceptions for "prueba3d Shared" folder in "prueba3d tvOS" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Prueba3D-Logo.icon",
+			);
+			target = 0BFB68C12FC6140100E7EDFB /* prueba3d tvOS */;
+		};
+		0BF4637E2FC9FA2C0073DBC1 /* Exceptions for "prueba3d Shared" folder in "prueba3d macOS" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Prueba3D-Logo.icon",
+			);
+			target = 0BFB68D12FC6140100E7EDFB /* prueba3d macOS */;
+		};
+		0BF4638A2FC9FA900073DBC1 /* Exceptions for "prueba3d macOS" folder in "prueba3d tvOS" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"/Localized: prueba3d tvOS/LaunchScreen.storyboard",
+				"/Localized: prueba3d tvOS/Main.storyboard",
+				"prueba3d tvOS/AppDelegate.swift",
+				"prueba3d tvOS/GameViewController.swift",
+			);
+			target = 0BFB68C12FC6140100E7EDFB /* prueba3d tvOS */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		0BFB68A82FC613FD00E7EDFB /* prueba3d Shared */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				0BF4637B2FC9FA280073DBC1 /* Exceptions for "prueba3d Shared" folder in "prueba3d iOS" target */,
+				0BF4637C2FC9FA280073DBC1 /* Exceptions for "prueba3d Shared" folder in "prueba3d tvOS" target */,
+				0BF4637E2FC9FA2C0073DBC1 /* Exceptions for "prueba3d Shared" folder in "prueba3d macOS" target */,
+			);
 			name = "prueba3d Shared";
 			path = "platform/apple/prueba3d Shared";
 			sourceTree = "<group>";
@@ -25,14 +75,12 @@
 			path = "platform/apple/prueba3d iOS";
 			sourceTree = "<group>";
 		};
-		0BFB68C32FC6140100E7EDFB /* prueba3d tvOS */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			name = "prueba3d tvOS";
-			path = "platform/apple/prueba3d tvOS";
-			sourceTree = "<group>";
-		};
 		0BFB68D32FC6140100E7EDFB /* prueba3d macOS */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				0BF4638A2FC9FA900073DBC1 /* Exceptions for "prueba3d macOS" folder in "prueba3d tvOS" target */,
+				0BF463772FC9F75A0073DBC1 /* Exceptions for "prueba3d macOS" folder in "prueba3d macOS" target */,
+			);
 			name = "prueba3d macOS";
 			path = "platform/apple/prueba3d macOS";
 			sourceTree = "<group>";
@@ -69,7 +117,6 @@
 			children = (
 				0BFB68A82FC613FD00E7EDFB /* prueba3d Shared */,
 				0BFB68B32FC6140100E7EDFB /* prueba3d iOS */,
-				0BFB68C32FC6140100E7EDFB /* prueba3d tvOS */,
 				0BFB68D32FC6140100E7EDFB /* prueba3d macOS */,
 				0BFB68B22FC6140100E7EDFB /* Products */,
 			);
@@ -121,9 +168,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				0BFB68C32FC6140100E7EDFB /* prueba3d tvOS */,
 			);
 			name = "prueba3d tvOS";
 			packageProductDependencies = (
@@ -392,6 +436,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "prueba3d-macOS-Info.plist";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -428,6 +473,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "prueba3d-macOS-Info.plist";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;

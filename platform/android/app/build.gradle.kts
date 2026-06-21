@@ -63,7 +63,7 @@ android {
 
     externalNativeBuild {
         cmake {
-            path = file("../../../CMakeLists.txt")
+            path = project.rootDir.resolve("CMakeLists.txt")
         }
     }
 

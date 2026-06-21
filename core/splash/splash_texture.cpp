@@ -2,14 +2,13 @@
 #include "stb_image.h"
 
 #include "splash_texture.h"
+#include "../logger.h"
 #include <bx/bx.h>
-#include <android/log.h>
 #include <iostream>
 
-#define LOGE(...) __android_log_print(ANDROID_LOG_ERROR, "SplashTexture", __VA_ARGS__)
-#define LOGI(...) __android_log_print(ANDROID_LOG_INFO, "SplashTexture", __VA_ARGS__)
-
+#ifdef __ANDROID__
 #include <android/asset_manager.h>
+#endif
 
 SplashTexture::SplashTexture()
         : handle(BGFX_INVALID_HANDLE)

@@ -10,5 +10,6 @@ object NativeBridge {
     external fun shutdownGame()
     external fun setGameState(state: Int)
     external fun onTouch(x: Float, y: Float, action: Int)
+    external fun onKeyEvent(keyCode: Int, isPressed: Boolean): Boolean
     external fun shouldQuit(): Boolean
 }

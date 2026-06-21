@@ -106,6 +106,7 @@ static const bgfx::Memory* createShaderMem(const char* source, bool isVertex, ui
 SplashRenderer::SplashRenderer()
         : shaderProgram(BGFX_INVALID_HANDLE)
         , vbh(BGFX_INVALID_HANDLE)
+        , m_ibh(BGFX_INVALID_HANDLE)
         , s_texColor(BGFX_INVALID_HANDLE)
         , isValid(false) {
 }
@@ -150,14 +151,21 @@ void SplashRenderer::Init() {
     s_texColor = bgfx::createUniform(kTexUniform, bgfx::UniformType::Sampler);
 
     PosTexCoordVertex vertices[] = {
-            {-1.0f,  1.0f,  0.0f, 0.0f},
-            {-1.0f, -1.0f,  0.0f, 1.0f},
-            { 1.0f,  1.0f,  1.0f, 0.0f},
-            { 1.0f, -1.0f,  1.0f, 1.0f}
+            {-1.0f,  1.0f,  0.0f, 0.0f}, // 0: Top-Left
+            { 1.0f,  1.0f,  1.0f, 0.0f}, // 1: Top-Right
+            {-1.0f, -1.0f,  0.0f, 1.0f}, // 2: Bottom-Left
+            { 1.0f, -1.0f,  1.0f, 1.0f}, // 3: Bottom-Right
     };
 
     vbh = bgfx::createVertexBuffer(bgfx::copy(vertices, sizeof(vertices)), PosTexCoordVertex::ms_layout);
-    isValid = bgfx::isValid(vbh);
+
+    uint16_t indices[] = {
+        0, 2, 1,
+        1, 2, 3
+    };
+    m_ibh = bgfx::createIndexBuffer(bgfx::copy(indices, sizeof(indices)));
+
+    isValid = bgfx::isValid(vbh) && bgfx::isValid(m_ibh);
     LOGI("SplashRenderer::Init completed. isValid: %d, vbh: %hu", isValid, vbh.idx);
 }
 
@@ -169,6 +177,10 @@ void SplashRenderer::Shutdown() {
     if (bgfx::isValid(vbh)) {
         bgfx::destroy(vbh);
         vbh = BGFX_INVALID_HANDLE;
+    }
+    if (bgfx::isValid(m_ibh)) {
+        bgfx::destroy(m_ibh);
+        m_ibh = BGFX_INVALID_HANDLE;
     }
     if (bgfx::isValid(s_texColor)) {
         bgfx::destroy(s_texColor);
@@ -201,11 +213,9 @@ void SplashRenderer::Render(SplashTexture& tex, bgfx::ViewId viewId) {
     bgfx::setViewTransform(viewId, view, proj);
 
     bgfx::setVertexBuffer(0, vbh);
+    bgfx::setIndexBuffer(m_ibh);
     bgfx::setTexture(0, s_texColor, tex.handle);
 
-    uint64_t state = BGFX_STATE_WRITE_RGB | BGFX_STATE_WRITE_A |
-                     BGFX_STATE_PT_TRISTRIP |
-                     BGFX_STATE_BLEND_FUNC(BGFX_STATE_BLEND_SRC_ALPHA, BGFX_STATE_BLEND_INV_SRC_ALPHA);
-    bgfx::setState(state);
+    bgfx::setState(BGFX_STATE_WRITE_RGB | BGFX_STATE_WRITE_A | BGFX_STATE_BLEND_ALPHA);
     bgfx::submit(viewId, shaderProgram);
 }
