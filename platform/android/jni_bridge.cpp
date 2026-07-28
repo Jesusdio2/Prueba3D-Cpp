@@ -30,6 +30,11 @@ Java_com_faes_prueba3d_NativeBridge_initGame(JNIEnv* env, jobject, jobject activ
 }
 
 JNIEXPORT void JNICALL
+Java_com_faes_prueba3d_NativeBridge_updateViewport(JNIEnv*, jobject, jint width, jint height) {
+    UpdateViewport(width, height);
+}
+
+JNIEXPORT void JNICALL
 Java_com_faes_prueba3d_NativeBridge_updateGame(JNIEnv*, jobject, jfloat delta) {
     UpdateGame3D(delta);
 }
@@ -47,24 +52,58 @@ Java_com_faes_prueba3d_NativeBridge_setGameState(JNIEnv*, jobject, jint state) {
 
 JNIEXPORT void JNICALL
 Java_com_faes_prueba3d_NativeBridge_onTouch(JNIEnv*, jobject, jfloat x, jfloat y, jint action) {
-    OnTouch(x, y, action);
+    InputEvent event;
+    event.device = InputDeviceType::Touch;
+    event.action = (action == 0) ? InputAction::Down : (action == 1 ? InputAction::Up : InputAction::Move);
+    event.x = x;
+    event.y = y;
+    event.keyCode = 0;
+    PushInputEvent(event);
 }
 
 JNIEXPORT jboolean JNICALL
 Java_com_faes_prueba3d_NativeBridge_onKeyEvent(JNIEnv*, jobject, jint keyCode, jboolean isPressed) {
-    // 19 = DPAD_UP, 20 = DPAD_DOWN, 21 = DPAD_LEFT, 22 = DPAD_RIGHT, 23 = DPAD_CENTER, 66 = ENTER, 4 = BACK
-    // En un juego real, pasaríamos el código a C++ para manejarlo allí
-    if (isPressed) {
-        if (keyCode == 23 || keyCode == 66) { // Center o Enter
-            OnTouch(0, 0, 0); // Simular un touch para el botón JUGAR en el menú
-            return true;
-        }
-        if (keyCode == 4) { // Back
-            SetGameState(1); // Volver al menú (MENU = 1)
-            return true;
-        }
-    }
-    return false;
+    InputEvent event;
+    event.device = InputDeviceType::Keyboard; // O Gamepad, según origen
+    event.action = isPressed ? InputAction::Down : InputAction::Up;
+    event.keyCode = keyCode;
+    event.x = 0; event.y = 0;
+    PushInputEvent(event);
+    return true;
+}
+
+JNIEXPORT jboolean JNICALL
+Java_com_faes_prueba3d_NativeBridge_onGenericMotionEvent(JNIEnv* env, jobject, jobject eventObj) {
+    // Aquí se extraerían los ejes AXIS_X/Y y se enviaría como InputAction::Axis
+    return true;
+}
+
+JNIEXPORT void JNICALL
+Java_com_faes_prueba3d_NativeBridge_onInputEvent(JNIEnv*, jobject, jint device, jint action, jint keyCode, jfloat x, jfloat y, jfloat ax, jfloat ay) {
+    InputEvent event;
+    event.device = static_cast<InputDeviceType>(device);
+    event.action = static_cast<InputAction>(action);
+    event.keyCode = keyCode;
+    event.x = x;
+    event.y = y;
+    event.axisX = ax;
+    event.axisY = ay;
+    PushInputEvent(event);
+}
+
+JNIEXPORT void JNICALL
+Java_com_faes_prueba3d_NativeBridge_setDeviceType(JNIEnv*, jobject, jint type, jboolean isEmulator) {
+    SetDeviceType(type, isEmulator);
+}
+
+JNIEXPORT void JNICALL
+Java_com_faes_prueba3d_NativeBridge_onPause(JNIEnv*, jobject) {
+    // Pausar motor o audio
+}
+
+JNIEXPORT void JNICALL
+Java_com_faes_prueba3d_NativeBridge_onResume(JNIEnv*, jobject) {
+    // Reanudar
 }
 
 JNIEXPORT jboolean JNICALL

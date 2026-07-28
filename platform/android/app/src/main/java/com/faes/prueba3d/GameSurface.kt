@@ -2,6 +2,7 @@ package com.faes.prueba3d
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.InputDevice
 import android.view.Surface
 import android.view.SurfaceHolder
 import android.view.SurfaceView
@@ -25,7 +26,36 @@ class GameSurface @JvmOverloads constructor(
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
-        NativeBridge.onTouch(event.x, event.y, event.action)
+        val device = if (event.source and InputDevice.SOURCE_MOUSE == InputDevice.SOURCE_MOUSE) {
+            NativeBridge.DEVICE_MOUSE
+        } else {
+            NativeBridge.DEVICE_TOUCH
+        }
+
+        val action = when (event.action) {
+            MotionEvent.ACTION_DOWN -> NativeBridge.ACTION_DOWN
+            MotionEvent.ACTION_UP -> NativeBridge.ACTION_UP
+            else -> NativeBridge.ACTION_MOVE
+        }
+
+        // Detectar qué botón del mouse se pulsó (si aplica)
+        val buttonState = event.buttonState
+        val keyCode = when {
+            buttonState and MotionEvent.BUTTON_PRIMARY != 0 -> 1
+            buttonState and MotionEvent.BUTTON_SECONDARY != 0 -> 2
+            buttonState and MotionEvent.BUTTON_TERTIARY != 0 -> 3
+            else -> 0
+        }
+
+        NativeBridge.onInputEvent(
+            device,
+            action,
+            keyCode,
+            event.x,
+            event.y,
+            0f,
+            0f
+        )
         return true
     }
 
@@ -69,7 +99,7 @@ class GameSurface @JvmOverloads constructor(
     }
 
     override fun surfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) {
-        // Implementar cambio de resolución si es necesario
+        NativeBridge.updateViewport(width, height)
     }
 
     override fun surfaceDestroyed(holder: SurfaceHolder) {

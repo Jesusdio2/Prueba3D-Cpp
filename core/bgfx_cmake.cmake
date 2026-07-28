@@ -14,19 +14,8 @@ target_include_directories(bx PUBLIC
         "${bx_SOURCE_DIR}/3rdparty"
 )
 
-# Inyectamos las definiciones de plataforma específicas para que el código amalgamado responda
-target_compile_definitions(bx PUBLIC
-        __STDC_FORMAT_MACROS
-
-        # Si estamos en macOS/iOS (Darwin), forzamos las macros nativas de Apple y POSIX
-        $<$<PLATFORM_ID:Darwin>:BX_PLATFORM_OSX=1>
-        $<$<PLATFORM_ID:Darwin>:BX_CRT_NONE=1> # <- Forzar 1 le dice a bx que use el comportamiento POSIX puro libre de malloc.h
-        $<$<PLATFORM_ID:Darwin>:__APPLE__=1>
-
-        # Si estás en Android, las que correspondan a su NDK
-        $<$<PLATFORM_ID:Android>:BX_PLATFORM_ANDROID=1>
-        $<$<PLATFORM_ID:Android>:BX_CRT_NONE=0> # Android suele tener malloc.h, pero si falla, prueba 1
-)
+# Dejamos que bx detecte la plataforma automáticamente.
+# Las definiciones globales (__STDC_FORMAT_MACROS, BX_CONFIG_DEBUG) ya vienen del CMakeLists.txt raíz.
 
 # --- BIMG ---
 if(NOT bimg_SOURCE_DIR)
@@ -39,7 +28,7 @@ add_library(bimg STATIC
     "${bimg_SOURCE_DIR}/src/image.cpp"
     "${bimg_SOURCE_DIR}/src/image_decode.cpp"
     "${bimg_SOURCE_DIR}/src/image_encode.cpp"
-    "${bimg_SOURCE_DIR}/src/image_gnf.cpp"
+    "${bimg_SOURCE_DIR}/src/image_cubemap_filter.cpp"
     ${ASTC_SOURCES}
 )
 target_include_directories(bimg PUBLIC
@@ -48,6 +37,11 @@ target_include_directories(bimg PUBLIC
     "${bimg_SOURCE_DIR}/3rdparty/astc-encoder/include"
     "${bimg_SOURCE_DIR}/3rdparty/iqa/include"
     "${bimg_SOURCE_DIR}/3rdparty/tinyexr/deps"
+)
+# Deshabilitamos formatos que requieren dependencias externas complejas (avif, heif)
+target_compile_definitions(bimg PRIVATE
+    BIMG_CONFIG_PARSE_AVIF=0
+    BIMG_CONFIG_PARSE_HEIF=0
 )
 target_link_libraries(bimg PUBLIC bx)
 

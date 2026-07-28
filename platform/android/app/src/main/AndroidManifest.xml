@@ -17,6 +17,13 @@
         android:name="android.hardware.gamepad"
         android:required="false"/>
     <uses-feature
+        android:name="android.hardware.type.watch"
+        android:required="false"
+        tools:ignore="InvalidUsesFeatureAttribute" />
+    <uses-feature
+        android:name="android.hardware.type.automotive"
+        android:required="false" />
+    <uses-feature
         android:name="android.hardware.touchscreen.multitouch"
         android:required="false"/>
 
@@ -33,10 +40,24 @@
         android:supportsRtl="true"
         android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
 
+        <meta-data
+            android:name="com.google.android.wearable.standalone"
+            android:value="true" />
+
+        <uses-library
+            android:name="com.google.android.wearable"
+            android:required="false" />
+
+        <meta-data
+            android:name="com.android.automotive"
+            android:resource="@xml/automotive_app_desc" />
+
         <activity
             android:name=".GameActivity"
-            android:screenOrientation="landscape"
-            android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize|screenLayout|density|uiMode"
+            android:screenOrientation="fullUser"
+            android:resizeableActivity="true"
+            android:supportsPictureInPicture="true"
+            android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize|screenLayout|smallestScreenSize|density|uiMode"
             android:immersive="true"
             android:alwaysRetainTaskState="true"
             android:launchMode="singleTask"

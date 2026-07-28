@@ -18,9 +18,9 @@ android {
         externalNativeBuild {
             cmake {
                 cppFlags += "-std=c++20"
-                cppFlags += "-DBX_CONFIG_DEBUG=1"
                 arguments += "-DANDROID_STL=c++_shared"
-                abiFilters += listOf("arm64-v8a", "x86_64")
+                arguments += "-DCMAKE_SHARED_LINKER_FLAGS=-Wl,-z,max-page-size=16384"
+                abiFilters += listOf("arm64-v8a", "armeabi-v7a", "x86_64", "x86")
             }
         }
     }
@@ -30,7 +30,6 @@ android {
             isMinifyEnabled = false
             externalNativeBuild {
                 cmake {
-                    cppFlags += "-DBX_CONFIG_DEBUG=0"
                 }
             }
         }
@@ -38,7 +37,6 @@ android {
             isDebuggable = true
             externalNativeBuild {
                 cmake {
-                    cppFlags += "-DBX_CONFIG_DEBUG=1"
                 }
             }
         }

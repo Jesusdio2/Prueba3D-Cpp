@@ -1,0 +1,92 @@
+{
+  "HVIGOR_OHOS_PLUGIN": {
+    "MODULES": [
+      {
+        "MODULE_NAME": "923fe53966c6cd9343e11af776cd4b05be315ea4b200b02e4d5dfb0f929b73bf",
+        "API_TYPE": "stageMode",
+        "INCLUDE_IN_BUILD": true,
+        "IS_COMMAND_LINE_ENTRY_MODULE": true,
+        "BUILD_OPTION": [
+          {
+            "path": "debuggable",
+            "traceValue": true,
+            "value": true
+          },
+          {
+            "path": "copyFrom",
+            "traceValue": false,
+            "value": ""
+          },
+          {
+            "path": "externalNativeOptions",
+            "traceValue": false,
+            "value": ""
+          },
+          {
+            "path": "externalNativeOptions.path",
+            "traceValue": false,
+            "value": ""
+          },
+          {
+            "path": "externalNativeOptions.arguments",
+            "traceValue": false,
+            "value": ""
+          },
+          {
+            "path": "externalNativeOptions.cppFlags",
+            "traceValue": false,
+            "value": ""
+          },
+          {
+            "path": "externalNativeOptions.abiFilters",
+            "traceValue": true,
+            "value": [
+              "arm64-v8a",
+              "x86_64"
+            ]
+          }
+        ],
+        "PACKAGE_JSON": [],
+        "MODULE_TYPE": "entry",
+        "INCREMENTAL_TASKS": {
+          "BUILD_NATIVE_WITH_CMAKE": true
+        },
+        "IS_INCREMENTAL_MODULE": true
+      }
+    ],
+    "NATIVE_COMPILER": "Default",
+    "IS_FULL_BUILD": false,
+    "PACKAGE_JSON": [],
+    "BUILD_MODE": "debug"
+  },
+  "HVIGOR": {
+    "IS_INCREMENTAL": true,
+    "IS_DAEMON": true,
+    "IS_PARALLEL": true,
+    "IS_HVIGORFILE_TYPE_CHECK": false,
+    "IS_EXECUTION_OHPM_BY_HVIGOR": false,
+    "BUILD_ANALYSIS_MODE": "normal",
+    "TASK_TIME": {
+      "923fe53966c6cd9343e11af776cd4b05be315ea4b200b02e4d5dfb0f929b73bf": {
+        "init": 285875,
+        "PreBuild": 197055834,
+        "ConfigureCmake": 12420500,
+        "BuildNativeWithCmake": 17176208,
+        "compileNative": 136625
+      },
+      "APP": {
+        "init": 121583
+      }
+    },
+    "CUSTOM_TASK_TIME": {},
+    "CUSTOM_PLUGIN_TIME": {},
+    "APIS": [],
+    "CONFIG_EXPERIMENT": {
+      "ENABLE_MODULE_SKIP": false,
+      "ENABLE_CPP_FUNCTION_LEVEL_INCREMENTAL": false
+    },
+    "CONFIG_PROPERTIES": {},
+    "BUILD_ID": "202607262134094520",
+    "TOTAL_TIME": 435264583
+  }
+}

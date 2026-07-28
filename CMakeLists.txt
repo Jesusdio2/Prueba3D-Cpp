@@ -1,3 +1,4 @@
+# cmakelists.txt (Raiz)
 cmake_minimum_required(VERSION 3.20)
 project(Prueba3D LANGUAGES CXX)
 
@@ -17,12 +18,11 @@ if (APPLE)
 endif()
 
 # 3. 🔥 DEFINICIONES GLOBALES PARA EL ECOSISTEMA BGFX
-add_compile_definitions(BX_CONFIG_DEBUG=1)
+# BX y BIMG requieren BX_CONFIG_DEBUG. Lo sincronizamos con el tipo de build de CMake.
+add_compile_definitions(BX_CONFIG_DEBUG=$<CONFIG:Debug>)
+add_compile_definitions(__STDC_FORMAT_MACROS)
 
-# Configuraciones correctas para entornos POSIX/Apple (Evita que bx use lógica de Windows)
 if (APPLE)
-    add_compile_definitions(__STDC_FORMAT_MACROS)
-    add_compile_definitions(BX_CRT_NONE=0)
     add_compile_options(-fPIC)
 endif()
 
@@ -83,6 +83,10 @@ add_subdirectory(core)
 if (ANDROID)
     message(STATUS "Configurando para Android")
     add_subdirectory(platform/android)
+
+elseif (OHOS) # <--- Todo junto: elseif
+    message(STATUS "Configurando para Huawei / OpenHarmony")
+    add_subdirectory(platform/ohos/entry/src/main/cpp)
 
 elseif (APPLE)
     message(STATUS "Configurando para Apple")
