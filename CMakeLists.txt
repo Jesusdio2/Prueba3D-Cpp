@@ -80,11 +80,13 @@ endif()
 add_subdirectory(core)
 
 # 6. Detectar Plataforma
+message(STATUS "Detecting platform: CMAKE_SYSTEM_NAME=${CMAKE_SYSTEM_NAME}")
+
 if (ANDROID)
     message(STATUS "Configurando para Android")
     add_subdirectory(platform/android)
 
-elseif (OHOS) # <--- Todo junto: elseif
+elseif (CMAKE_SYSTEM_NAME STREQUAL "OHOS" OR DEFINED OHOS_PLATFORM)
     message(STATUS "Configurando para Huawei / OpenHarmony")
     add_subdirectory(platform/ohos/entry/src/main/cpp)
 

@@ -4,6 +4,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
 }
 
+@Suppress("DEPRECATION")
 android {
     namespace = "com.faes.prueba3d"
     compileSdk = 35
@@ -18,10 +19,23 @@ android {
         externalNativeBuild {
             cmake {
                 cppFlags += "-std=c++20"
+                // Compilación reproducible: mapear rutas locales a rutas relativas
+                cppFlags += "-ffile-prefix-map=${project.rootDir}=."
                 arguments += "-DANDROID_STL=c++_shared"
                 arguments += "-DCMAKE_SHARED_LINKER_FLAGS=-Wl,-z,max-page-size=16384"
                 abiFilters += listOf("arm64-v8a", "armeabi-v7a", "x86_64", "x86")
             }
+        }
+    }
+
+    // Configuración para empaquetado reproducible y compatible con AGP 9.x+
+    packaging {
+        jniLibs {
+            // Se define aquí en lugar del manifest. true = extraer al instalar.
+            useLegacyPackaging = true
+        }
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
 
@@ -73,4 +87,10 @@ android {
 dependencies {
     implementation("androidx.games:games-frame-pacing:2.1.3")
     implementation("androidx.appcompat:appcompat:1.7.0")
+}
+
+// Forzar orden de archivos y timestamps deterministas en el APK para compilaciones reproducibles
+tasks.withType<Zip>().configureEach {
+    isPreserveFileTimestamps = false
+    isReproducibleFileOrder = true
 }

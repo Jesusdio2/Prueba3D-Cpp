@@ -26,6 +26,16 @@
     <uses-feature
         android:name="android.hardware.touchscreen.multitouch"
         android:required="false"/>
+    <uses-feature
+        android:name="android.hardware.type.pc"
+        android:required="false" />
+    <uses-feature
+        android:name="android.software.xr.immersive"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.vulkan.version"
+        android:version="0x400003"
+        android:required="false" />
 
     <application
         android:banner="@mipmap/ic_banner"
@@ -71,6 +81,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LEANBACK_LAUNCHER"/>
+                <category android:name="android.intent.category.XR" />
             </intent-filter>
 
         </activity>
