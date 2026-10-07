@@ -19,17 +19,11 @@ add_library(core STATIC
 # Directorios de include locales del motor
 target_include_directories(core PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}
+        ${CMAKE_SOURCE_DIR}
 )
 
 # 🔥 CAMBIAR A C++20 (bgfx lo requiere)
 target_compile_features(core PUBLIC cxx_std_20)
-
-# 🔥 DEFINICIONES NECESARIAS PARA BGFX
-target_compile_definitions(core PUBLIC
-        $<$<CONFIG:Debug>:BX_CONFIG_DEBUG=1>
-        $<$<NOT:$<CONFIG:Debug>>:BX_CONFIG_DEBUG=0>
-        BX_CONFIG_DEBUG=1  # Forzar para desarrollo
-)
 
 # 🎯 INCLUIR TARGETS MANUALES DE BGFX
 include(bgfx_cmake.cmake)

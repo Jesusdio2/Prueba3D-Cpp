@@ -12,6 +12,7 @@ public:
     void Init();
     void Shutdown();
     void Render(SplashTexture& tex, bgfx::ViewId viewId = 0);
+    bool IsValid() const { return isValid; }
 
 private:
     void CreateShaderProgram();

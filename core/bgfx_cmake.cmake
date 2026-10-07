@@ -6,13 +6,28 @@ if(NOT bx_SOURCE_DIR)
     message(FATAL_ERROR "bx_SOURCE_DIR is not set. FetchContent failed?")
 endif()
 
-add_library(bx STATIC
-        "${bx_SOURCE_DIR}/src/amalgamated.cpp"
-)
+file(GLOB BX_SOURCES "${bx_SOURCE_DIR}/src/*.cpp")
+list(FILTER BX_SOURCES EXCLUDE REGEX "amalgamated\\.cpp$")
+list(FILTER BX_SOURCES EXCLUDE REGEX "crtnone\\.cpp$")
+
+add_library(bx STATIC ${BX_SOURCES})
+
 target_include_directories(bx PUBLIC
         "${bx_SOURCE_DIR}/include"
         "${bx_SOURCE_DIR}/3rdparty"
 )
+
+if(MINGW)
+    target_include_directories(bx BEFORE PUBLIC
+            "${bx_SOURCE_DIR}/include/compat/mingw"
+    )
+    target_compile_definitions(bx PUBLIC
+            MINGW_HAS_SECURE_API=1
+    )
+    target_compile_options(bx PUBLIC
+            -msse4.1
+    )
+endif()
 
 # Dejamos que bx detecte la plataforma automáticamente.
 # Las definiciones globales (__STDC_FORMAT_MACROS, BX_CONFIG_DEBUG) ya vienen del CMakeLists.txt raíz.
@@ -63,7 +78,12 @@ target_include_directories(bgfx PUBLIC
 target_compile_definitions(bgfx PUBLIC
     $<$<PLATFORM_ID:Android>:BGFX_CONFIG_RENDERER_OPENGLES=30>
     $<$<PLATFORM_ID:Darwin>:BGFX_CONFIG_RENDERER_METAL=1>
-    $<$<PLATFORM_ID:Windows>:BGFX_CONFIG_RENDERER_DIRECT3D11=1>
+    $<$<PLATFORM_ID:Windows>:BGFX_CONFIG_RENDERER_OPENGL=41>
+    $<$<PLATFORM_ID:Windows>:BGFX_CONFIG_RENDERER_DIRECT3D11=0>
+    $<$<PLATFORM_ID:Windows>:BGFX_CONFIG_RENDERER_DIRECT3D12=0>
+    $<$<BOOL:${WIN32}>:BGFX_CONFIG_RENDERER_OPENGL=41>
+    $<$<BOOL:${WIN32}>:BGFX_CONFIG_RENDERER_DIRECT3D11=0>
+    $<$<BOOL:${WIN32}>:BGFX_CONFIG_RENDERER_DIRECT3D12=0>
 )
 
 target_link_libraries(bgfx PUBLIC bx bimg)

@@ -1,0 +1,11 @@
+/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-win/CMakeFiles/edit_cache.dir
+/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-win/CMakeFiles/rebuild_cache.dir
+/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-win/core/CMakeFiles/core.dir
+/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-win/core/CMakeFiles/bx.dir
+/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-win/core/CMakeFiles/bimg.dir
+/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-win/core/CMakeFiles/bgfx.dir
+/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-win/core/CMakeFiles/edit_cache.dir
+/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-win/core/CMakeFiles/rebuild_cache.dir
+/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-win/platform/windows/CMakeFiles/prueba3d_win.dir
+/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-win/platform/windows/CMakeFiles/edit_cache.dir
+/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-win/platform/windows/CMakeFiles/rebuild_cache.dir

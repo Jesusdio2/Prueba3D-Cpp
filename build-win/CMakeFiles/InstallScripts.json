@@ -1,0 +1,9 @@
+{
+	"InstallScripts" : 
+	[
+		"/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-win/cmake_install.cmake",
+		"/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-win/core/cmake_install.cmake",
+		"/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-win/platform/windows/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

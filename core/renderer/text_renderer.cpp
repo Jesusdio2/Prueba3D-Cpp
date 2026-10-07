@@ -23,7 +23,6 @@ void TextVertex::init() {
 }
 
 static const char* vsh_text =
-    "#version 300 es\n"
     "layout(location=0) in vec2 aPos;\n"
     "layout(location=1) in vec2 aTexCoord;\n"
     "layout(location=2) in vec4 aColor;\n"
@@ -37,8 +36,9 @@ static const char* vsh_text =
     "}\n";
 
 static const char* fsh_text =
-    "#version 300 es\n"
+    "#ifdef GL_ES\n"
     "precision mediump float;\n"
+    "#endif\n"
     "in vec2 v_texcoord;\n"
     "in vec4 v_color;\n"
     "uniform sampler2D s_fontSampler;\n"
@@ -48,10 +48,9 @@ static const char* fsh_text =
     "    fragColor = vec4(v_color.rgb, v_color.a * alpha);\n"
     "}\n";
 
-// Helper idéntico al de SplashRenderer para empaquetar shaders
 static const bgfx::Memory* createShaderMem(const char* source, bool isVertex, uint16_t uniformCount = 0) {
     uint32_t sourceLen = (uint32_t)strlen(source);
-    uint32_t headerLen = 10;
+    uint32_t baseHeaderLen = 18;
     uint32_t metadataLen = 0;
     if (!isVertex && uniformCount == 1) {
         metadataLen = 1 + 13 + 1 + 1 + 2 + 2; // "s_fontSampler"
@@ -59,16 +58,15 @@ static const bgfx::Memory* createShaderMem(const char* source, bool isVertex, ui
         metadataLen = 1 + 10 + 1 + 1 + 2 + 2; // "u_textProj"
     }
 
-    uint32_t shaderSizeFieldLen = 4;
-    const bgfx::Memory* mem = bgfx::alloc(headerLen + metadataLen + shaderSizeFieldLen + sourceLen);
+    const bgfx::Memory* mem = bgfx::alloc(baseHeaderLen + metadataLen + 4 + sourceLen);
     uint8_t* data = mem->data;
     memcpy(data, isVertex ? "VSH" : "FSH", 3);
     data[3] = 0x05;
-    memset(data + 4, 0, 4);
-    data[8] = (uint8_t)(uniformCount & 0xFF);
-    data[9] = (uint8_t)((uniformCount >> 8) & 0xFF);
+    memset(data + 4, 0, 12);
+    data[16] = (uint8_t)(uniformCount & 0xFF);
+    data[17] = (uint8_t)((uniformCount >> 8) & 0xFF);
 
-    uint8_t* curr = data + 10;
+    uint8_t* curr = data + 18;
     if (!isVertex && uniformCount == 1) {
         const char* name = "s_fontSampler";
         uint8_t nameLen = (uint8_t)strlen(name);
@@ -85,11 +83,9 @@ static const bgfx::Memory* createShaderMem(const char* source, bool isVertex, ui
         *curr++ = 1; *curr++ = 0; *curr++ = 0; *curr++ = 1; *curr++ = 0;
     }
 
-    *curr++ = (uint8_t)(sourceLen & 0xFF);
-    *curr++ = (uint8_t)((sourceLen >> 8) & 0xFF);
-    *curr++ = (uint8_t)((sourceLen >> 16) & 0xFF);
-    *curr++ = (uint8_t)((sourceLen >> 24) & 0xFF);
-    memcpy(curr, source, sourceLen);
+    uint32_t* sizeField = (uint32_t*)curr;
+    *sizeField = sourceLen;
+    memcpy(curr + 4, source, sourceLen);
     return mem;
 }
 

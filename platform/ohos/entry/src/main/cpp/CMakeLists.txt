@@ -9,15 +9,25 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Definiciones de preprocesador necesarias para entornos POSIX/Linux (como HarmonyOS)
 add_compile_definitions(__STDC_FORMAT_MACROS)
 add_compile_definitions(BX_CRT_NONE=0)
-add_compile_definitions(OHOS_PLATFORM) # Definición útil por si necesitas segmentar código en el core
+add_compile_definitions(OHOS_PLATFORM)
+
+# ==============================================================================
+# TRUCO: Forzar a buscar las librerías construidas por el CMake raíz global
+# ==============================================================================
+link_directories(
+    ${CMAKE_BINARY_DIR}
+    ${CMAKE_BINARY_DIR}/lib
+    ${CMAKE_BINARY_DIR}/lib/${OHOS_ARCH}
+    ${CMAKE_CURRENT_BINARY_DIR}/../../../../..
+)
+# ==============================================================================
 
 # 2. El objetivo principal: El puente NAPI nativo de Huawei (.so)
 add_library(entry SHARED
-    napi_init.cpp # <--- CAMBIADO AQUÍ: Tu archivo real descubierto con ls
+    napi_init.cpp
 )
 
 # 3. ENLAZAR TU LOGICA COMPARTIDA DE CORE Y DEPENDENCIAS MULTIPLATAFORMA
-# (El target "core" viene inyectado automáticamente desde el CMake raíz global)
 target_link_libraries(entry PRIVATE
     core
     bgfx

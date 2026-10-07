@@ -2,11 +2,9 @@
 #include <bgfx/bgfx.h>
 #include <bx/math.h>
 #include <bx/file.h>
-#include <android/log.h>
+#include "../logger.h"
+#include <cstring>
 #include <vector>
-
-#define LOGE(...) __android_log_print(ANDROID_LOG_ERROR, "SplashRenderer", __VA_ARGS__)
-#define LOGI(...) __android_log_print(ANDROID_LOG_INFO, "SplashRenderer", __VA_ARGS__)
 
 struct PosTexCoordVertex {
     float x, y;
@@ -25,9 +23,8 @@ struct PosTexCoordVertex {
 
 bgfx::VertexLayout PosTexCoordVertex::ms_layout;
 
-// Simple GLSL shaders for OpenGL ES 3.0
+// Simple GLSL shaders
 static const char* vertexShaderSource =
-    "#version 300 es\n"
     "layout(location=0) in vec2 aPos;\n"
     "layout(location=1) in vec2 aTexCoord;\n"
     "out vec2 TexCoord;\n"
@@ -37,8 +34,9 @@ static const char* vertexShaderSource =
     "}\n";
 
 static const char* fragmentShaderSource =
-    "#version 300 es\n"
+    "#ifdef GL_ES\n"
     "precision mediump float;\n"
+    "#endif\n"
     "in vec2 TexCoord;\n"
     "uniform sampler2D ourTexture;\n"
     "out vec4 FragColor;\n"
@@ -46,35 +44,23 @@ static const char* fragmentShaderSource =
     "    FragColor = texture(ourTexture, TexCoord);\n"
     "}\n";
 
-// Helper to wrap GLSL source into bgfx shader memory
 static const bgfx::Memory* createShaderMem(const char* source, bool isVertex, uint16_t uniformCount = 0) {
     uint32_t sourceLen = (uint32_t)strlen(source);
-    // Header: Magic(4), Hash(4), UniformCount(2) = 10 bytes
-    uint32_t headerLen = 10;
+    uint32_t baseHeaderLen = 18; // Magic(4) + HashIn(4) + SrvMask(4) + UavMask(4) + UniformCount(2)
     uint32_t metadataLen = 0;
-
-    // If uniformCount > 0, we MUST provide metadata (name length, name string, type, num, regIndex, regCount)
-    // for each uniform. For our fragment shader, we have 1 uniform: "ourTexture".
     if (!isVertex && uniformCount == 1) {
-        // nameLen(1) + "ourTexture"(10) + type(1) + num(1) + regIndex(2) + regCount(2) = 17 bytes
-        metadataLen = 1 + 10 + 1 + 1 + 2 + 2;
+        metadataLen = 1 + 10 + 1 + 1 + 2 + 2; // "ourTexture"
     }
 
-    // After metadata, bgfx expects a 4-byte shader size (uint32_t)
-    uint32_t shaderSizeFieldLen = 4;
-
-    const bgfx::Memory* mem = bgfx::alloc(headerLen + metadataLen + shaderSizeFieldLen + sourceLen);
-
+    const bgfx::Memory* mem = bgfx::alloc(baseHeaderLen + metadataLen + 4 + sourceLen);
     uint8_t* data = mem->data;
     memcpy(data, isVertex ? "VSH" : "FSH", 3);
     data[3] = 0x05; // Version 5
-    memset(data + 4, 0, 4); // Hash
+    memset(data + 4, 0, 12); // HashIn (4) + rawSrvMask (4) + rawUavMask (4)
+    data[16] = (uint8_t)(uniformCount & 0xFF);
+    data[17] = (uint8_t)((uniformCount >> 8) & 0xFF);
 
-    // Uniform Count (offset 8, 2 bytes, little-endian)
-    data[8] = (uint8_t)(uniformCount & 0xFF);
-    data[9] = (uint8_t)((uniformCount >> 8) & 0xFF);
-
-    uint8_t* curr = data + 10;
+    uint8_t* curr = data + 18;
     if (!isVertex && uniformCount == 1) {
         const char* name = "ourTexture";
         uint8_t nameLen = (uint8_t)strlen(name);
@@ -82,23 +68,14 @@ static const bgfx::Memory* createShaderMem(const char* source, bool isVertex, ui
         memcpy(curr, name, nameLen);
         curr += nameLen;
         *curr++ = (uint8_t)bgfx::UniformType::Sampler;
-        *curr++ = 1; // num (array size)
-
-        // regIndex (2 bytes, little-endian)
-        *curr++ = 0;
-        *curr++ = 0;
-        // regCount (2 bytes, little-endian)
-        *curr++ = 1; // 1 for sampler
-        *curr++ = 0;
+        *curr++ = 1; // num
+        *curr++ = 0; *curr++ = 0; // regIndex
+        *curr++ = 1; *curr++ = 0; // regCount
     }
 
-    // Shader size field (4 bytes, little-endian)
-    *curr++ = (uint8_t)(sourceLen & 0xFF);
-    *curr++ = (uint8_t)((sourceLen >> 8) & 0xFF);
-    *curr++ = (uint8_t)((sourceLen >> 16) & 0xFF);
-    *curr++ = (uint8_t)((sourceLen >> 24) & 0xFF);
-
-    memcpy(curr, source, sourceLen);
+    uint32_t* sizeField = (uint32_t*)curr;
+    *sizeField = sourceLen;
+    memcpy(curr + 4, source, sourceLen);
 
     return mem;
 }

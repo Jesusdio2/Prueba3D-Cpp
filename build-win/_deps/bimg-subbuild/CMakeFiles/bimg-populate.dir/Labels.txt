@@ -1,0 +1,14 @@
+# Target labels
+ bimg-populate
+# Source files and their labels
+/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-win/_deps/bimg-subbuild/CMakeFiles/bimg-populate
+/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-win/_deps/bimg-subbuild/CMakeFiles/bimg-populate.rule
+/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-win/_deps/bimg-subbuild/CMakeFiles/bimg-populate-complete.rule
+/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-win/_deps/bimg-subbuild/bimg-populate-prefix/src/bimg-populate-stamp/bimg-populate-build.rule
+/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-win/_deps/bimg-subbuild/bimg-populate-prefix/src/bimg-populate-stamp/bimg-populate-configure.rule
+/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-win/_deps/bimg-subbuild/bimg-populate-prefix/src/bimg-populate-stamp/bimg-populate-download.rule
+/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-win/_deps/bimg-subbuild/bimg-populate-prefix/src/bimg-populate-stamp/bimg-populate-install.rule
+/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-win/_deps/bimg-subbuild/bimg-populate-prefix/src/bimg-populate-stamp/bimg-populate-mkdir.rule
+/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-win/_deps/bimg-subbuild/bimg-populate-prefix/src/bimg-populate-stamp/bimg-populate-patch.rule
+/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-win/_deps/bimg-subbuild/bimg-populate-prefix/src/bimg-populate-stamp/bimg-populate-test.rule
+/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-win/_deps/bimg-subbuild/bimg-populate-prefix/src/bimg-populate-stamp/bimg-populate-update.rule

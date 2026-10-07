@@ -40,9 +40,8 @@ static const uint16_t s_cubeIndices[] = {
     2, 3, 6, 6, 3, 7,
 };
 
-// Shaders manuales para OpenGL ES 3.0 (similar a SplashRenderer)
+// Shaders manuales para OpenGL / OpenGLES (bgfx inyecta #version automáticamente)
 static const char* cubeVSH =
-    "#version 300 es\n"
     "layout(location=0) in vec3 a_position;\n"
     "layout(location=1) in vec4 a_color0;\n"
     "uniform mat4 u_modelViewProj;\n"
@@ -53,8 +52,9 @@ static const char* cubeVSH =
     "}\n";
 
 static const char* cubeFSH =
-    "#version 300 es\n"
+    "#ifdef GL_ES\n"
     "precision mediump float;\n"
+    "#endif\n"
     "in vec4 v_color0;\n"
     "out vec4 o_color;\n"
     "void main() {\n"
@@ -64,28 +64,28 @@ static const char* cubeFSH =
 // Helper para crear el buffer de memoria que bgfx espera para un shader "raw"
 static const bgfx::Memory* createShaderMem(const char* source, bool isVertex, int uniformCount = 0) {
     uint32_t len = (uint32_t)strlen(source);
-    // Header (10 bytes) + Metadata (si hay uniforms) + size (4 bytes) + source
+    uint32_t baseHeaderLen = 18;
     uint32_t metadataLen = 0;
     if (uniformCount > 0) {
-        // "u_modelViewProj" -> len(1) + name(15) + type(1) + num(1) + regIndex(2) + regCount(2) = 22
-        metadataLen = 1 + 15 + 1 + 1 + 2 + 2;
+        metadataLen = 1 + 15 + 1 + 1 + 2 + 2; // "u_modelViewProj"
     }
-    const bgfx::Memory* mem = bgfx::alloc(10 + metadataLen + 4 + len);
+    const bgfx::Memory* mem = bgfx::alloc(baseHeaderLen + metadataLen + 4 + len);
     uint8_t* data = mem->data;
     memcpy(data, isVertex ? "VSH" : "FSH", 3);
-    data[3] = 0x05; // Version
-    memset(data + 4, 0, 4); // Hash
-    data[8] = (uint8_t)uniformCount; data[9] = 0; // Uniform count
+    data[3] = 0x05;
+    memset(data + 4, 0, 12);
+    data[16] = (uint8_t)(uniformCount & 0xFF);
+    data[17] = (uint8_t)((uniformCount >> 8) & 0xFF);
 
-    uint8_t* curr = data + 10;
+    uint8_t* curr = data + 18;
     if (uniformCount > 0) {
         const char* name = "u_modelViewProj";
         *curr++ = (uint8_t)strlen(name);
         memcpy(curr, name, strlen(name)); curr += strlen(name);
         *curr++ = (uint8_t)bgfx::UniformType::Mat4;
-        *curr++ = 1; // num
-        *curr++ = 0; *curr++ = 0; // regIndex
-        *curr++ = 4; *curr++ = 0; // regCount (4 registers for mat4)
+        *curr++ = 1;
+        *curr++ = 0; *curr++ = 0;
+        *curr++ = 4; *curr++ = 0;
     }
 
     uint32_t* sizeField = (uint32_t*)curr;

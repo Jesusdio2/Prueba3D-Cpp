@@ -6,9 +6,9 @@
     "mainElement": "EntryAbility",
     "deviceTypes": [
       "default",
+      "wearable",
       "tablet"
     ],
-
     "deliveryWithInstall": true,
     "installationFree": false,
     "pages": "$profile:main_pages",

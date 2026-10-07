@@ -24,6 +24,7 @@ bool SplashTexture::Load(const std::string& path, void* assetManager) {
     int channels;
     unsigned char* data = nullptr;
 
+#ifdef __ANDROID__
     if (assetManager) {
         AAssetManager* am = (AAssetManager*)assetManager;
         AAsset* asset = AAssetManager_open(am, path.c_str(), AASSET_MODE_BUFFER);
@@ -39,6 +40,10 @@ bool SplashTexture::Load(const std::string& path, void* assetManager) {
     } else {
         data = stbi_load(path.c_str(), &width, &height, &channels, 4);
     }
+#else
+    (void)assetManager;
+    data = stbi_load(path.c_str(), &width, &height, &channels, 4);
+#endif
 
     if (!data) {
         LOGE("Error cargando splash: %s", path.c_str());

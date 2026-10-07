@@ -1,11 +1,7 @@
 // core/game.h
 #pragma once
 
-#ifdef _WIN32
-#define EXPORT_API __declspec(dllexport)
-#else
 #define EXPORT_API
-#endif
 
 enum class GameState {
     SPLASH,
@@ -49,4 +45,5 @@ EXPORT_API void SetGameState(int state);
 EXPORT_API void PushInputEvent(const InputEvent& event);
 EXPORT_API void OnTouch(float x, float y, int action);
 EXPORT_API bool ShouldQuit();
+EXPORT_API bool IsGameInitialized();
 }

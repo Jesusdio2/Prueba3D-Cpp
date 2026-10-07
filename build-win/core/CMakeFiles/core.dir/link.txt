@@ -1,0 +1,2 @@
+/opt/homebrew/bin/x86_64-w64-mingw32-ar qc libcore.a CMakeFiles/core.dir/game.cpp.obj CMakeFiles/core.dir/scene.cpp.obj CMakeFiles/core.dir/renderer/text_renderer.cpp.obj CMakeFiles/core.dir/splash/splash_renderer.cpp.obj CMakeFiles/core.dir/splash/splash_texture.cpp.obj
+/opt/homebrew/bin/x86_64-w64-mingw32-ranlib libcore.a

@@ -1,0 +1,3 @@
+/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-win/_deps/bx-subbuild/CMakeFiles/bx-populate.dir
+/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-win/_deps/bx-subbuild/CMakeFiles/edit_cache.dir
+/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-win/_deps/bx-subbuild/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,2 @@
+/opt/homebrew/bin/x86_64-w64-mingw32-ar qc libbgfx.a "CMakeFiles/bgfx.dir/__/_deps/bgfx-src/src/amalgamated.cpp.obj"
+/opt/homebrew/bin/x86_64-w64-mingw32-ranlib libbgfx.a

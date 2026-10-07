@@ -1,0 +1,14 @@
+# Target labels
+ bx-populate
+# Source files and their labels
+/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-win/_deps/bx-subbuild/CMakeFiles/bx-populate
+/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-win/_deps/bx-subbuild/CMakeFiles/bx-populate.rule
+/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-win/_deps/bx-subbuild/CMakeFiles/bx-populate-complete.rule
+/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-win/_deps/bx-subbuild/bx-populate-prefix/src/bx-populate-stamp/bx-populate-build.rule
+/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-win/_deps/bx-subbuild/bx-populate-prefix/src/bx-populate-stamp/bx-populate-configure.rule
+/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-win/_deps/bx-subbuild/bx-populate-prefix/src/bx-populate-stamp/bx-populate-download.rule
+/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-win/_deps/bx-subbuild/bx-populate-prefix/src/bx-populate-stamp/bx-populate-install.rule
+/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-win/_deps/bx-subbuild/bx-populate-prefix/src/bx-populate-stamp/bx-populate-mkdir.rule
+/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-win/_deps/bx-subbuild/bx-populate-prefix/src/bx-populate-stamp/bx-populate-patch.rule
+/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-win/_deps/bx-subbuild/bx-populate-prefix/src/bx-populate-stamp/bx-populate-test.rule
+/Users/Francisco/AndroidStudioProjects/Prueba3D-Cpp/build-win/_deps/bx-subbuild/bx-populate-prefix/src/bx-populate-stamp/bx-populate-update.rule

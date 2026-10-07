@@ -49,13 +49,14 @@
         "PACKAGE_JSON": [],
         "MODULE_TYPE": "entry",
         "INCREMENTAL_TASKS": {
-          "BUILD_NATIVE_WITH_CMAKE": true
+          "BUILD_NATIVE_WITH_CMAKE": true,
+          "COMPILE_ARKTS": false
         },
-        "IS_INCREMENTAL_MODULE": true
+        "IS_INCREMENTAL_MODULE": false
       }
     ],
     "NATIVE_COMPILER": "Default",
-    "IS_FULL_BUILD": false,
+    "IS_FULL_BUILD": true,
     "PACKAGE_JSON": [],
     "BUILD_MODE": "debug"
   },
@@ -68,25 +69,90 @@
     "BUILD_ANALYSIS_MODE": "normal",
     "TASK_TIME": {
       "923fe53966c6cd9343e11af776cd4b05be315ea4b200b02e4d5dfb0f929b73bf": {
-        "init": 285875,
-        "PreBuild": 197055834,
-        "ConfigureCmake": 12420500,
-        "BuildNativeWithCmake": 17176208,
-        "compileNative": 136625
-      },
-      "APP": {
-        "init": 121583
+        "PreBuild": 5956750,
+        "CreateModuleInfo": 277542,
+        "ConfigureCmake": 12058167,
+        "PreCheckSyscap": 139250,
+        "GeneratePkgContextInfo": 1616667,
+        "ProcessIntegratedHsp": 267958,
+        "BuildNativeWithCmake": 7043458,
+        "ProcessStartupConfig": 266125,
+        "BuildJS": 808584
       }
     },
     "CUSTOM_TASK_TIME": {},
     "CUSTOM_PLUGIN_TIME": {},
-    "APIS": [],
+    "APIS": [
+      "getProperty"
+    ],
     "CONFIG_EXPERIMENT": {
       "ENABLE_MODULE_SKIP": false,
       "ENABLE_CPP_FUNCTION_LEVEL_INCREMENTAL": false
     },
     "CONFIG_PROPERTIES": {},
-    "BUILD_ID": "202607262134094520",
-    "TOTAL_TIME": 435264583
+    "TOTAL_TIME": 1195135292,
+    "BUILD_ID": "202609302159510950",
+    "ERROR_MESSAGE": [
+      {
+        "CODE": "00308018",
+        "STACK": "...",
+        "PROJECT_CONFIG": {
+          "buildMode": "Debug",
+          "compileMode": "esmodule",
+          "moduleType": "entry",
+          "targetName": ".default",
+          "packageManagerType": "ohpm",
+          "isLocalTest": false,
+          "needCoverageInsert": false,
+          "debugLine": false,
+          "compileSdkVersion": 23,
+          "compatibleSdkVersion": 23,
+          "originCompatibleSdkVersion": 23,
+          "etsLoaderVersion": "6.1.0.31",
+          "etsLoaderReleaseType": "Release",
+          "aotCompileMode": "type",
+          "isCrossplatform": false,
+          "bundleType": "app",
+          "apiVersion": 23,
+          "isFaMode": false,
+          "deviceTypes": [
+            "default",
+            "wearable",
+            "tablet"
+          ],
+          "integratedHsp": false,
+          "branchElimination": false,
+          "tsImportSendable": false,
+          "resolveConflictMode": true,
+          "useNativeResolver": true,
+          "shouldEmitJs": true,
+          "useTscResolve": false,
+          "singleFileEmit": false,
+          "executionMode": "memory",
+          "isHarDeduplicateEnabled": false,
+          "autoLazyImport": false,
+          "allowEmptyBundleName": false,
+          "reExportCheckMode": "noCheck",
+          "usePathPlaceholder": false,
+          "writeRollupCache": true,
+          "isExpandImportEnabled": false,
+          "ignoreCrossplatformCheck": false,
+          "skipOhModulesLint": false,
+          "enableStrictCheckOHModule": false,
+          "useDeclarationFileSignature": false,
+          "isPreloadSoEnabled": false,
+          "runtimeOS": "OpenHarmony",
+          "sdkInfo": "true:23:6.1.0.31:Release",
+          "useSourceHash": false,
+          "isByteCodeHarOptimize": false,
+          "copyCodeResourceEnable": true,
+          "uiTransformOptimization": false
+        }
+      },
+      {
+        "CODE": "00308018",
+        "TIMESTAMP": "1790830792290"
+      }
+    ]
   }
 }
